@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CC00FCD1E01DDFD002B2387 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC00FCC1E01DDFD002B2387 /* main.cpp */; };
+		7CC00FD51E01EFF8002B2387 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC00FD31E01EFF8002B2387 /* Tile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		7CC00FC91E01DDFC002B2387 /* MinesweeperIP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MinesweeperIP; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC00FCC1E01DDFD002B2387 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7CC00FD31E01EFF8002B2387 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
+		7CC00FD41E01EFF8002B2387 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				7CC00FCC1E01DDFD002B2387 /* main.cpp */,
+				7CC00FD31E01EFF8002B2387 /* Tile.cpp */,
+				7CC00FD41E01EFF8002B2387 /* Tile.hpp */,
 			);
 			path = MinesweeperIP;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CC00FCD1E01DDFD002B2387 /* main.cpp in Sources */,
+				7CC00FD51E01EFF8002B2387 /* Tile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
