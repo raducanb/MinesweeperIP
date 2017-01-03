@@ -9,6 +9,10 @@
 #ifndef Tile_hpp
 #define Tile_hpp
 
-#include <stdio.h>
+class Tile {
+public:
+    bool isFlagged = false;
+    bool isUncovered = false;
+};
 
 #endif /* Tile_hpp */
