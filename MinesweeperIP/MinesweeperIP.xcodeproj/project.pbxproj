@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E7FCE971E1BDC8F00778C8C /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7FCE951E1BDC8F00778C8C /* Board.cpp */; };
+		6E7FCE991E1BF9F700778C8C /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7FCE981E1BF9F700778C8C /* Position.cpp */; };
 		7CC00FCD1E01DDFD002B2387 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CC00FCC1E01DDFD002B2387 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,9 @@
 		6E7FCE8E1E1BDA4F00778C8C /* BombTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BombTile.hpp; sourceTree = "<group>"; };
 		6E7FCE8F1E1BDA4F00778C8C /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = "<group>"; };
 		6E7FCE901E1BDA4F00778C8C /* ValueTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueTile.hpp; sourceTree = "<group>"; };
+		6E7FCE951E1BDC8F00778C8C /* Board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
+		6E7FCE961E1BDC8F00778C8C /* Board.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
+		6E7FCE981E1BF9F700778C8C /* Position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Position.cpp; sourceTree = "<group>"; };
 		7CC00FC91E01DDFC002B2387 /* MinesweeperIP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MinesweeperIP; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC00FCC1E01DDFD002B2387 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +56,16 @@
 			path = Tiles;
 			sourceTree = "<group>";
 		};
+		6E7FCE941E1BDC8F00778C8C /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				6E7FCE951E1BDC8F00778C8C /* Board.cpp */,
+				6E7FCE961E1BDC8F00778C8C /* Board.hpp */,
+				6E7FCE981E1BF9F700778C8C /* Position.cpp */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
 		7CC00FC01E01DDFC002B2387 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				7CC00FCC1E01DDFD002B2387 /* main.cpp */,
+				6E7FCE941E1BDC8F00778C8C /* Board */,
 				6E7FCE8D1E1BDA4F00778C8C /* Tiles */,
 			);
 			path = MinesweeperIP;
@@ -133,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7FCE971E1BDC8F00778C8C /* Board.cpp in Sources */,
 				7CC00FCD1E01DDFD002B2387 /* main.cpp in Sources */,
+				6E7FCE991E1BF9F700778C8C /* Position.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +248,7 @@
 		7CC00FD11E01DDFD002B2387 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -237,6 +256,7 @@
 		7CC00FD21E01DDFD002B2387 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
