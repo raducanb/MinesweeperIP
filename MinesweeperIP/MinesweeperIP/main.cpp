@@ -8,10 +8,16 @@
 
 #include <iostream>
 
+#include "Tile.hpp"
+
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
     cout << "Hello, World!\n";
+
+    Tile tile;
+    tile.isFlagged = true;
+
     return 0;
 }
