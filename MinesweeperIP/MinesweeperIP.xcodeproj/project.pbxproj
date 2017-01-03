@@ -23,6 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E7FCE881E1BC7DA00778C8C /* BombTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BombTile.hpp; sourceTree = "<group>"; };
+		6E7FCE8B1E1BCCC300778C8C /* ValueTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueTile.hpp; sourceTree = "<group>"; };
 		7CC00FC91E01DDFC002B2387 /* MinesweeperIP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MinesweeperIP; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC00FCC1E01DDFD002B2387 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7CC00FD41E01EFF8002B2387 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = "<group>"; };
@@ -60,6 +62,8 @@
 			children = (
 				7CC00FCC1E01DDFD002B2387 /* main.cpp */,
 				7CC00FD41E01EFF8002B2387 /* Tile.hpp */,
+				6E7FCE881E1BC7DA00778C8C /* BombTile.hpp */,
+				6E7FCE8B1E1BCCC300778C8C /* ValueTile.hpp */,
 			);
 			path = MinesweeperIP;
 			sourceTree = "<group>";
@@ -248,6 +252,7 @@
 				7CC00FD21E01DDFD002B2387 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
