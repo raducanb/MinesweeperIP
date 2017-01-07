@@ -12,14 +12,17 @@
 #include "Position.cpp"
 #include "Tile.hpp"
 #include <map>
+#include <vector>
 
 using namespace std;
 
 class Board {
 private:
     map<Position, Tile> tilesMap;
-
+    vector<Position> adjacentPositionsForPosition(Position position);
+public:
     bool isTileBomb(Tile *tile);
+    void openPositionAndNeighbours(Position position);
 };
 
 #endif /* Board_hpp */
