@@ -11,9 +11,7 @@
 
 #include "Tile.hpp"
 
-#include <stdio.h>
-
-class ValueTile : Tile {
+class ValueTile : public Tile {
 public:
     int value;
 };
