@@ -13,6 +13,7 @@ class Tile {
 public:
     bool isFlagged = false;
     bool isUncovered = false;
+    virtual ~Tile() {};
 };
 
 #endif /* Tile_hpp */
