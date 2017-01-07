@@ -16,11 +16,21 @@
 
 using namespace std;
 
+typedef vector<Position> Positions;
+
 class Board {
 private:
-    map<Position, Tile> tilesMap;
-    vector<Position> adjacentPositionsForPosition(Position position);
+    map<Position, Tile *> tilesMap;
+    int width;
+    int height;
+
+    Positions adjacentPositionsForPosition(Position position);
+    void initTilesMap(int width, int height);
+    void addBombsToTilesMapAtPositions(Positions bombsPositions);
+    void incrementValuesForAllTilesAtPositions(Positions positions);
 public:
+    Board(int width, int height);
+    ~Board();
     bool isTileBomb(Tile *tile);
     void openPositionAndNeighbours(Position position);
 };
