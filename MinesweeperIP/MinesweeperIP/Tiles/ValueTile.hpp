@@ -13,7 +13,7 @@
 
 class ValueTile : public Tile {
 public:
-    int value;
+    int value = 0;
 };
 
 #endif /* ValueTile_hpp */
