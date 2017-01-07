@@ -7,3 +7,10 @@
 //
 
 #include "Board.hpp"
+
+#include "BombTile.hpp"
+#include "ValueTile.hpp"
+
+bool Board::isTileBomb(Tile *tile) {
+    return (typeid(*tile) == typeid(BombTile));
+}

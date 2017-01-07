@@ -59,8 +59,8 @@
 		6E7FCE941E1BDC8F00778C8C /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				6E7FCE951E1BDC8F00778C8C /* Board.cpp */,
 				6E7FCE961E1BDC8F00778C8C /* Board.hpp */,
+				6E7FCE951E1BDC8F00778C8C /* Board.cpp */,
 				6E7FCE981E1BF9F700778C8C /* Position.cpp */,
 			);
 			path = Board;

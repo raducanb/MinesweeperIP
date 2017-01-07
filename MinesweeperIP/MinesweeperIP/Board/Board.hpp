@@ -10,5 +10,16 @@
 #define Board_hpp
 
 #include "Position.cpp"
+#include "Tile.hpp"
+#include <map>
+
+using namespace std;
+
+class Board {
+private:
+    map<Position, Tile> tilesMap;
+
+    bool isTileBomb(Tile *tile);
+};
 
 #endif /* Board_hpp */
