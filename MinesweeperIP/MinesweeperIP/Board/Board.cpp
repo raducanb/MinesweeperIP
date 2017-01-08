@@ -92,7 +92,7 @@ void Board::printMap(bool forceUncover)
         tileString.append(isLastItemOnLine ? "\n" : " ");
         mapString.append(tileString);
     }
-    cout << mapString;
+    cout << mapString << "\n";
 }
 
 void Board::incrementValuesForAllTilesAtPositions(Positions positions)
