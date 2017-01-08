@@ -31,6 +31,7 @@ private:
 public:
     const int width;
     const int height;
+    const int numberOfBombs;
 
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();

@@ -46,7 +46,7 @@ Positions adjacentPositionsForPosition(Position position, int maxX, int maxY)
 }
 
 Board::Board(int width, int height, int numberOfBombs)
-            : width(width), height(height)
+            : width(width), height(height), numberOfBombs(numberOfBombs)
 {
     initTilesMap(width, height);
     addBombsToTilesMapAtPositions(generateBombsPositions(width, height, numberOfBombs));
