@@ -19,10 +19,10 @@ struct MenuValues {
     static MenuValuesMap create_map()
     {
         MenuValuesMap values;
-        values[PrintMap] = "Printează harta";
-        values[OpenTile] = "Selectează poziție";
-        values[FlagTile] = "Marchează poziție";
-        values[NewGame] = "Joc nou";
+        values[MenuOptionPrintMap] = "Printează harta";
+        values[MenuOptionOpenTile] = "Selectează poziție";
+        values[MenuOptionFlagTile] = "Marchează poziție";
+        values[MenuOptionNewGame] = "Joc nou";
         return values;
     }
     static const MenuValuesMap menuValuesMap;

@@ -16,10 +16,10 @@
 using namespace std;
 
 enum MenuOption {
-    PrintMap = 1,
-    OpenTile = 2,
-    FlagTile = 3,
-    NewGame = 4
+    MenuOptionPrintMap = 1,
+    MenuOptionOpenTile = 2,
+    MenuOptionFlagTile = 3,
+    MenuOptionNewGame = 4
 };
 
 class Menu {
