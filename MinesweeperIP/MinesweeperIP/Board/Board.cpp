@@ -71,9 +71,9 @@ string stringForUncoveredTile(Tile *tile)
     }
 }
 
-string stringForTile(Tile *tile)
+string stringForTile(Tile *tile, bool forceUncover)
 {
-    if (tile->isUncovered) {
+    if (tile->isUncovered || forceUncover) {
         return stringForUncoveredTile(tile);
     } else if (tile->isFlagged) {
         return "F";
@@ -82,11 +82,11 @@ string stringForTile(Tile *tile)
     }
 }
 
-void Board::printMap()
+void Board::printMap(bool forceUncover)
 {
     string mapString;
     for(auto const &posAndTile : this->tilesMap) {
-        string tileString = ::stringForTile(posAndTile.second);
+        string tileString = ::stringForTile(posAndTile.second, forceUncover);
         int xPos = posAndTile.first.x;
         bool isLastItemOnLine = xPos == (this->width - 1);
         tileString.append(isLastItemOnLine ? "\n" : " ");
