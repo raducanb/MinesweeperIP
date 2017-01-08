@@ -19,7 +19,7 @@ void printMenu(Menu menu)
     cout << "\n";
 }
 
-int inputNumber(string stringToShow, bool(*verificationFunction)(int))
+int inputNumber(string stringToShow, function<bool (int)> verificationFunction)
 {
     int inputOption = 0;
     string inputString;
