@@ -81,7 +81,7 @@ void Game::userSelectedOption(MenuOption option)
 {
     switch (option) {
         case MenuOptionNewGame:
-            
+            startGame();
             break;
         case MenuOptionOpenTile:
             openTile();
