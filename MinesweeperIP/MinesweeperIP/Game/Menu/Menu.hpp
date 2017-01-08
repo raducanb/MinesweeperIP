@@ -25,7 +25,7 @@ enum MenuOption {
 class Menu {
 public:
     string displayString();
-    bool isOptionValid(int option);
+    static bool isOptionValid(int option);
 };
 
 #endif /* Menu_hpp */
