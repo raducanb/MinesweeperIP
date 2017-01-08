@@ -16,10 +16,11 @@
 
 class Game {
 private:
-    Board board;
+    Board *board;
     Menu menu;
 public:
-    Game(Board board = Board());
+    Game();
+    Game(int boardWidth, int boardHeight);
     void startGame();
 };
 

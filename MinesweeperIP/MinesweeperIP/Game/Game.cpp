@@ -12,9 +12,14 @@
 
 using namespace std;
 
-Game::Game(Board board)
+Game::Game()
 {
-    this->board = board;
+    this->board = new Board();
+}
+
+Game::Game(int boardWidth, int boardHeight)
+{
+    this->board = new Board(boardWidth, boardHeight);
 }
 
 void printMenu(Menu menu)
