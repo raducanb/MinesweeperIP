@@ -130,7 +130,7 @@ bool Board::isTileBomb(Tile *tile)
     return (typeid(*tile) == typeid(BombTile));
 }
 
-void Board::openPositionAndNeighbours(Position position)
+void Board::openPositionAndNeighboursIfAny(Position position)
 {
     Tile *tile = this->tilesMap[position];
     bool shouldStop = isTileBomb(tile) || tile->isUncovered;
@@ -143,7 +143,7 @@ void Board::openPositionAndNeighbours(Position position)
     if (!shouldOpenAdjacentPositions) { return; }
 
     for (auto &i : adjacentPositionsForPosition(position)) {
-        openPositionAndNeighbours(i);
+        openPositionAndNeighboursIfAny(i);
     }
 }
 

@@ -34,7 +34,7 @@ public:
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
     static bool isTileBomb(Tile *tile);
-    void openPositionAndNeighbours(Position position);
+    void openPositionAndNeighboursIfAny(Position position);
     void toggleFlagForTileAtPosition(Position position);
     void printMap(bool forceUncover);
 };
