@@ -142,7 +142,10 @@ void Game::gameLoop()
         printDidLoseMessage();
     }
 
-    if (didWin || didLose) { return; }
+    if (didWin || didLose) {
+        startGame();
+        return;
+    }
 
     gameLoop();
 }
