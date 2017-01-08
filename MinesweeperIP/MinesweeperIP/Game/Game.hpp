@@ -19,6 +19,8 @@ private:
     Board *board;
     Menu menu;
     void userSelectedOption(MenuOption option);
+    void flagTile();
+    void openTile();
     Position inputPosition();
 public:
     void startGame();

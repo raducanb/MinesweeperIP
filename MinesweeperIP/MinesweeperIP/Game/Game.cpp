@@ -60,23 +60,32 @@ Position Game::inputPosition()
     return p;
 }
 
+void Game::flagTile()
+{
+    Position p = inputPosition();
+    this->board->toggleFlagForTileAtPosition(p);
+}
 
+void Game::openTile()
+{
+    Position p = inputPosition();
+    this->board->openPositionAndNeighboursIfAny(p);
+}
 
 void Game::userSelectedOption(MenuOption option)
 {
     switch (option) {
         case MenuOptionNewGame:
-
+            
             break;
         case MenuOptionOpenTile:
-
+            openTile();
             break;
-
         case MenuOptionFlagTile:
-
+            flagTile();
             break;
         case MenuOptionPrintMap:
-            this->board->printMap(false);
+            cout << this->board->mapDisplayString(false);
             break;
     }
 }
