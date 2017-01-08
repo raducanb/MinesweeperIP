@@ -35,6 +35,7 @@ public:
     ~Board();
     static bool isTileBomb(Tile *tile);
     void openPositionAndNeighbours(Position position);
+    void toggleFlagForTileAtPosition(Position position);
     void printMap(bool forceUncover);
 };
 

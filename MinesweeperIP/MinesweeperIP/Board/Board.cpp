@@ -57,6 +57,12 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
     }
 }
 
+void Board::toggleFlagForTileAtPosition(Position position)
+{
+    Tile *tile = this->tilesMap[position];
+    tile->isFlagged = !tile->isFlagged;
+}
+
 string stringForUncoveredTile(Tile *tile)
 {
     if (Board::isTileBomb(tile)) {
