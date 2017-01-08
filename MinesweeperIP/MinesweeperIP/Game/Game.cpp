@@ -69,7 +69,7 @@ void Game::flagTile()
 void Game::openTile()
 {
     Position p = inputPosition();
-    this->board->openPositionAndNeighboursIfAny(p);
+    this->board->openTileAtPosition(p);
 }
 
 void Game::printMap()

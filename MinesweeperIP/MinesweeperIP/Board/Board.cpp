@@ -22,6 +22,29 @@ int generateRandomNumberSmallerThan(int max)
     return rand() % max;
 }
 
+Positions adjacentPositionsForPosition(Position position, int maxX, int maxY)
+{
+    Positions adjacentPositions;
+    int startPointX = max(position.x - 1, 0);
+    int startPointY = max(position.y - 1, 0);
+    int endPointX = min(position.x + 2, maxX);
+    int endPointY = min(position.y + 2, maxY);
+
+    for (int x = startPointX; x < endPointX; x++) {
+        for (int y = startPointY; y < endPointY; y++) {
+            bool isPositionRedundant = (x == position.x && y == position.y);
+            if (isPositionRedundant) { continue; }
+
+            Position p;
+            p.x = x;
+            p.y = y;
+            adjacentPositions.push_back(p);
+        }
+    }
+
+    return adjacentPositions;
+}
+
 Board::Board(int width, int height, int numberOfBombs)
             : width(width), height(height)
 {
@@ -53,7 +76,8 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
     for (Position &position : bombsPositions) {
         BombTile *bombTile = new BombTile();
         this->tilesMap[position] = bombTile;
-        incrementValuesForAllTilesAtPositions(adjacentPositionsForPosition(position));
+        auto adjacentPositions = adjacentPositionsForPosition(position, this->width, this->height);
+        incrementValuesForAllTilesAtPositions(adjacentPositions);
     }
 }
 
@@ -130,42 +154,27 @@ bool Board::isTileBomb(Tile *tile)
     return (typeid(*tile) == typeid(BombTile));
 }
 
-void Board::openPositionAndNeighboursIfAny(Position position)
+void Board::openTileAtPosition(Position position, bool isFirstTime)
 {
     Tile *tile = this->tilesMap[position];
-    bool shouldStop = isTileBomb(tile) || tile->isUncovered;
+    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && isFirstTime);
+    bool shouldStop = foundBombAndIsCalledRecursively || tile->isUncovered;
     if (shouldStop) { return; }
 
     tile->isUncovered = true;
 
-    ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
+    openAdjacentPositionsForTileAtPosition(position);
+}
+
+void Board::openAdjacentPositionsForTileAtPosition(Position position)
+{
+    ValueTile *valueTile = dynamic_cast<ValueTile *>(this->tilesMap[position]);
+    if (valueTile == nullptr) { return; }
+
     bool shouldOpenAdjacentPositions = (valueTile->value == 0);
     if (!shouldOpenAdjacentPositions) { return; }
 
-    for (auto &i : adjacentPositionsForPosition(position)) {
-        openPositionAndNeighboursIfAny(i);
+    for (auto &i : adjacentPositionsForPosition(position, this->width, this->height)) {
+        openTileAtPosition(i, false);
     }
-}
-
-Positions Board::adjacentPositionsForPosition(Position position)
-{
-    Positions adjacentPositions;
-    int startPointX = max(position.x - 1, 0);
-    int startPointY = max(position.y - 1, 0);
-    int endPointX = min(position.x + 2, this->width);
-    int endPointY = min(position.y + 2, this->height);
-
-    for (int x = startPointX; x < endPointX; x++) {
-        for (int y = startPointY; y < endPointY; y++) {
-            bool isPositionRedundant = (x == position.x && y == position.y);
-            if (isPositionRedundant) { continue; }
-
-            Position p;
-            p.x = x;
-            p.y = y;
-            adjacentPositions.push_back(p);
-        }
-    }
-
-    return adjacentPositions;
 }
