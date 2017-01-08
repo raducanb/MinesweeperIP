@@ -101,6 +101,16 @@ void Game::startGame()
 {
     this->board = new Board();
     printMenu(this->menu);
-    MenuOption option = inputMenuOptionForMenu(this->menu);
-    userSelectedOption(option);
+
+    while (true) {
+        MenuOption option = inputMenuOptionForMenu(this->menu);
+        userSelectedOption(option);
+
+        if (option == MenuOptionNewGame) { break; }
+
+        bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
+        if (shouldCheckForEndGame) {
+
+        }
+    }
 }
