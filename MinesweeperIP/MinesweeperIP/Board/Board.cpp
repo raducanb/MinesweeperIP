@@ -143,8 +143,8 @@ Positions Board::adjacentPositionsForPosition(Position position)
     Positions adjacentPositions;
     int startPointX = max(position.x - 1, 0);
     int startPointY = max(position.y - 1, 0);
-    int endPointX = min(position.x + 2, this->width - 1);
-    int endPointY = min(position.y + 2, this->height - 1);
+    int endPointX = min(position.x + 2, this->width);
+    int endPointY = min(position.y + 2, this->height);
 
     for (int x = startPointX; x < endPointX; x++) {
         for (int y = startPointY; y < endPointY; y++) {
