@@ -29,7 +29,7 @@ private:
     void addBombsToTilesMapAtPositions(Positions bombsPositions);
     void incrementValuesForAllTilesAtPositions(Positions positions);
 public:
-    Board(int width, int height);
+    Board(int width, int height, int numberOfBombs = 3);
     ~Board();
     static bool isTileBomb(Tile *tile);
     void openPositionAndNeighbours(Position position);

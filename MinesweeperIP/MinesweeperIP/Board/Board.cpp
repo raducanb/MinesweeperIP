@@ -15,22 +15,20 @@
 #include <iostream>
 #include <set>
 
-static int const kNumberOfBombs = 10;
-
-Positions generateBombsPositions(int maxWidth, int maxHeight);
+Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs);
 
 int generateRandomNumberSmallerThan(int max)
 {
     return rand() % max;
 }
 
-Board::Board(int width, int height)
+Board::Board(int width, int height, int numberOfBombs)
 {
     this->width = width;
     this->height = height;
 
     initTilesMap(width, height);
-    addBombsToTilesMapAtPositions(generateBombsPositions(width, height));
+    addBombsToTilesMapAtPositions(generateBombsPositions(width, height, numberOfBombs));
 }
 
 Board::~Board()
@@ -106,7 +104,7 @@ void Board::incrementValuesForAllTilesAtPositions(Positions positions)
     }
 }
 
-Positions generateBombsPositions(int maxWidth, int maxHeight)
+Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs)
 {
     set<Position> bombsPositions;
 
@@ -118,7 +116,7 @@ Positions generateBombsPositions(int maxWidth, int maxHeight)
         p.x = x;
         p.y = y;
         bombsPositions.insert(p);
-    } while (bombsPositions.size() < kNumberOfBombs);
+    } while (bombsPositions.size() < numberOfBombs);
 
     return Positions(bombsPositions.begin(), bombsPositions.end());
 }
