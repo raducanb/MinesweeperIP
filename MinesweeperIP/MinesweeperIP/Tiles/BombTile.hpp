@@ -11,7 +11,7 @@
 
 #include "Tile.hpp"
 
-class BombTile : public Tile {
+struct BombTile : public Tile {
 };
 
 #endif /* BombTile_hpp */

@@ -9,7 +9,7 @@
 #ifndef Tile_hpp
 #define Tile_hpp
 
-class Tile {
+struct Tile {
 public:
     bool isFlagged = false;
     bool isUncovered = false;
