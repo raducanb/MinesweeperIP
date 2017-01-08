@@ -9,6 +9,7 @@
 #include "Game.hpp"
 
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -26,6 +27,23 @@ void printMenu(Menu menu)
 {
     cout << menu.displayString();
     cout << "\n";
+}
+
+int inputNumber(bool didTryOnce)
+{
+    int inputOption = 0;
+    string inputString;
+
+    while (true) {
+        cout << "Introdu un număr" << (didTryOnce ? " valid" : "") << ": ";
+        getline(cin, inputString);
+
+        stringstream stream(inputString);
+        if (stream >> inputOption) { break; }
+        didTryOnce = true;
+    }
+
+    return inputOption;
 }
 
 void Game::startGame()
