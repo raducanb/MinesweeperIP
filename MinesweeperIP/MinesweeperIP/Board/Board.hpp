@@ -31,7 +31,7 @@ private:
 public:
     Board(int width, int height);
     ~Board();
-    bool isTileBomb(Tile *tile);
+    static bool isTileBomb(Tile *tile);
     void openPositionAndNeighbours(Position position);
 };
 
