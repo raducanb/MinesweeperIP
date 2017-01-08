@@ -129,7 +129,10 @@ void Game::gameLoop()
     if (option == MenuOptionNewGame) { return; }
 
     bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
-    if (shouldCheckForEndGame) { gameLoop(); }
+    if (!shouldCheckForEndGame) {
+        gameLoop();
+        return;
+    }
 
     bool didWin = (this->board->numberOfUncoveredTiles() == this->board->numberOfBombs);
     bool didLose = this->board->hasABombTileSelected();
