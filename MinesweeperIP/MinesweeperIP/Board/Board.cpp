@@ -196,7 +196,7 @@ int Board::numberOfUncoveredTiles()
     int uncoveredTilesNumber = 0;
     for (auto &i : this->tilesMap) {
         Tile *tile = i.second;
-        if (!tile->isUncovered) { continue; }
+        if (tile->isUncovered) { continue; }
         uncoveredTilesNumber++;
     }
     return uncoveredTilesNumber;
