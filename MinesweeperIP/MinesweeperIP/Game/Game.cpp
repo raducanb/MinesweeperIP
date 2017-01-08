@@ -46,6 +46,19 @@ int inputNumber(bool didTryOnce)
     return inputOption;
 }
 
+MenuOption inputMenuOptionForMenu(Menu menu)
+{
+    int input;
+    bool didTryOnce = false;
+    while(true) {
+        input = inputNumber(didTryOnce);
+
+        if (menu.isOptionValid(input)) { break; }
+        didTryOnce = true;
+    }
+
+    return (MenuOption)input;
+}
 void Game::startGame()
 {
     printMenu(this->menu);
