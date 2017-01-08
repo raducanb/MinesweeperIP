@@ -23,6 +23,8 @@ private:
     void openTile();
     void printMap();
     Position inputPosition();
+    void gameLoop();
+    MenuOption optionFromMenu();
 public:
     void startGame();
 };

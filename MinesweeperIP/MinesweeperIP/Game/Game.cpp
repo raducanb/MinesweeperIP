@@ -49,6 +49,16 @@ static bool verifyNumberMinZero(int number)
     return number >= 0;
 }
 
+void printDidWinMessage()
+{
+    cout << "\nAi castigat!\n";
+}
+
+void printDidLoseMessage()
+{
+    cout << "\nAi pierdut.\n";
+}
+
 Position Game::inputPosition()
 {
     Position p;
@@ -101,17 +111,35 @@ void Game::userSelectedOption(MenuOption option)
 void Game::startGame()
 {
     this->board = new Board();
+
+    gameLoop();
+}
+
+MenuOption Game::optionFromMenu()
+{
     printMenu(this->menu);
+    return inputMenuOptionForMenu(this->menu);
+}
 
-    while (true) {
-        MenuOption option = inputMenuOptionForMenu(this->menu);
-        userSelectedOption(option);
+void Game::gameLoop()
+{
+    MenuOption option = optionFromMenu();
+    userSelectedOption(option);
 
-        if (option == MenuOptionNewGame) { break; }
+    if (option == MenuOptionNewGame) { return; }
 
-        bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
-        if (shouldCheckForEndGame) {
+    bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
+    if (shouldCheckForEndGame) { gameLoop(); }
 
-        }
+    bool didWin = (this->board->numberOfUncoveredTiles() == this->board->numberOfBombs);
+    bool didLose = this->board->hasABombTileSelected();
+    if (didWin) {
+        printDidWinMessage();
+    } else if (didLose) {
+        printDidLoseMessage();
     }
+
+    if (didWin || didLose) { return; }
+
+    gameLoop();
 }
