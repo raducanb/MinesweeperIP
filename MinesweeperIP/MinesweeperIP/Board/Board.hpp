@@ -39,6 +39,8 @@ public:
     void openTileAtPosition(Position position, bool isFirstTime = true);
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);
+    bool hasABombTileSelected();
+    int numberOfUncoveredTiles();
 };
 
 #endif /* Board_hpp */

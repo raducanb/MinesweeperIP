@@ -178,3 +178,26 @@ void Board::openAdjacentPositionsForTileAtPosition(Position position)
         openTileAtPosition(i, false);
     }
 }
+
+bool Board::hasABombTileSelected()
+{
+    for (auto &i : this->tilesMap) {
+        Tile *tile = i.second;
+        if (isTileBomb(tile) && tile->isUncovered) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+int Board::numberOfUncoveredTiles()
+{
+    int uncoveredTilesNumber = 0;
+    for (auto &i : this->tilesMap) {
+        Tile *tile = i.second;
+        if (!tile->isUncovered) { continue; }
+        uncoveredTilesNumber++;
+    }
+    return uncoveredTilesNumber;
+}
