@@ -44,7 +44,8 @@ MenuOption inputMenuOptionForMenu(Menu menu)
     return (MenuOption)input;
 }
 
-static bool verifyNumberMinZero(int number) {
+static bool verifyNumberMinZero(int number)
+{
     return number >= 0;
 }
 
