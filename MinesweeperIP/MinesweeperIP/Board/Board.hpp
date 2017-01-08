@@ -37,7 +37,7 @@ public:
     static bool isTileBomb(Tile *tile);
     void openPositionAndNeighboursIfAny(Position position);
     void toggleFlagForTileAtPosition(Position position);
-    string mapDisplayString(bool forceUncover);
+    string mapDisplayString(bool forceUncover = false);
 };
 
 #endif /* Board_hpp */
