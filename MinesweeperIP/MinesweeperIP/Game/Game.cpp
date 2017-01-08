@@ -45,7 +45,7 @@ MenuOption inputMenuOptionForMenu(Menu menu)
 }
 
 static bool verifyNumberMinZero(int number) {
-    return number > 0;
+    return number >= 0;
 }
 
 Position Game::inputPosition()
@@ -53,10 +53,10 @@ Position Game::inputPosition()
     Position p;
     do {
         p.x = inputNumber("Introdu x", verifyNumberMinZero);
-    } while (p.x > this->board->width);
+    } while (p.x >= this->board->width);
     do {
         p.y = inputNumber("Introdu y", verifyNumberMinZero);
-    } while (p.y > this->board->height);
+    } while (p.y >= this->board->height);
     return p;
 }
 
