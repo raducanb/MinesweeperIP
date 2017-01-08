@@ -136,6 +136,10 @@ void Board::openPositionAndNeighbours(Position position)
 
     tile->isUncovered = true;
 
+    ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
+    bool shouldOpenAdjacentPositions = (valueTile->value == 0);
+    if (!shouldOpenAdjacentPositions) { return; }
+
     for (auto &i : adjacentPositionsForPosition(position)) {
         openPositionAndNeighbours(i);
     }
