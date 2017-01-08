@@ -157,7 +157,7 @@ bool Board::isTileBomb(Tile *tile)
 void Board::openTileAtPosition(Position position, bool isFirstTime)
 {
     Tile *tile = this->tilesMap[position];
-    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && isFirstTime);
+    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && !isFirstTime);
     bool shouldStop = foundBombAndIsCalledRecursively || tile->isUncovered;
     if (shouldStop) { return; }
 
