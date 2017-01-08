@@ -19,6 +19,7 @@ private:
     Board *board;
     Menu menu;
     void userSelectedOption(MenuOption option);
+    Position inputPosition();
 public:
     void startGame();
 };

@@ -44,14 +44,20 @@ MenuOption inputMenuOptionForMenu(Menu menu)
     return (MenuOption)input;
 }
 
-    while(true) {
-        input = inputNumber(didTryOnce);
+static bool verifyNumberMinZero(int number) {
+    return number > 0;
+}
 
-        if (menu.isOptionValid(input)) { break; }
-        didTryOnce = true;
-    }
-
-    return (MenuOption)input;
+Position Game::inputPosition()
+{
+    Position p;
+    do {
+        p.x = inputNumber("Introdu x", verifyNumberMinZero);
+    } while (p.x > this->board->width);
+    do {
+        p.y = inputNumber("Introdu y", verifyNumberMinZero);
+    } while (p.y > this->board->height);
+    return p;
 }
 
 
