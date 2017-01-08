@@ -29,17 +29,18 @@ void printMenu(Menu menu)
     cout << "\n";
 }
 
-int inputNumber(bool didTryOnce)
+int inputNumber(string stringToShow, bool(*verificationFunction)(int))
 {
     int inputOption = 0;
     string inputString;
+    bool didTryOnce;
 
     while (true) {
-        cout << "Introdu un număr" << (didTryOnce ? " valid" : "") << ": ";
-        getline(cin, inputString);
+        cout << stringToShow << (didTryOnce ? " validă" : "") << ": ";
+        cin >> inputString;
 
         stringstream stream(inputString);
-        if (stream >> inputOption) { break; }
+        if (stream >> inputOption && verificationFunction(inputOption)) { break; }
         didTryOnce = true;
     }
 
@@ -48,8 +49,11 @@ int inputNumber(bool didTryOnce)
 
 MenuOption inputMenuOptionForMenu(Menu menu)
 {
-    int input;
-    bool didTryOnce = false;
+    int input = inputNumber("Introdu o opțiune din meniu", menu.isOptionValid);
+
+    return (MenuOption)input;
+}
+
     while(true) {
         input = inputNumber(didTryOnce);
 
