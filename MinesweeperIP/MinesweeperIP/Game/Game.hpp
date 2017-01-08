@@ -18,6 +18,7 @@ class Game {
 private:
     Board *board;
     Menu menu;
+    void userSelectedOption(MenuOption option);
 public:
     Game();
     Game(int boardWidth, int boardHeight);

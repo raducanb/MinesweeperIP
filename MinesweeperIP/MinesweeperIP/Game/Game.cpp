@@ -59,7 +59,31 @@ MenuOption inputMenuOptionForMenu(Menu menu)
 
     return (MenuOption)input;
 }
+
+
+
+void Game::userSelectedOption(MenuOption option)
+{
+    switch (option) {
+        case MenuOptionNewGame:
+
+            break;
+        case MenuOptionOpenTile:
+
+            break;
+
+        case MenuOptionFlagTile:
+
+            break;
+        case MenuOptionPrintMap:
+            this->board->printMap(false);
+            break;
+    }
+}
+
 void Game::startGame()
 {
     printMenu(this->menu);
+    MenuOption option = inputMenuOptionForMenu(this->menu);
+    userSelectedOption(option);
 }
