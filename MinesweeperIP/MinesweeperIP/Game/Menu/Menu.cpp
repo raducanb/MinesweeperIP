@@ -43,3 +43,9 @@ string Menu::displayString()
 
     return displayString;
 }
+
+bool Menu::isOptionValid(int option)
+{
+    MenuValuesMap valuesMap = MenuValues::menuValuesMap;
+    return valuesMap.find((MenuOption)option) != valuesMap.end();
+}
