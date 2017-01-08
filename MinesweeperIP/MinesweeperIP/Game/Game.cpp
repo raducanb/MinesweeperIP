@@ -13,16 +13,6 @@
 
 using namespace std;
 
-Game::Game()
-{
-    this->board = new Board();
-}
-
-Game::Game(int boardWidth, int boardHeight)
-{
-    this->board = new Board(boardWidth, boardHeight);
-}
-
 void printMenu(Menu menu)
 {
     cout << menu.displayString();
@@ -87,6 +77,7 @@ void Game::userSelectedOption(MenuOption option)
 
 void Game::startGame()
 {
+    this->board = new Board();
     printMenu(this->menu);
     MenuOption option = inputMenuOptionForMenu(this->menu);
     userSelectedOption(option);
