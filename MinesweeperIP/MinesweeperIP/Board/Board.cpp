@@ -35,7 +35,7 @@ Board::Board(int width, int height)
 
 Board::~Board()
 {
-    tilesMap.clear();
+    this->tilesMap.clear();
 };
 
 void Board::initTilesMap(int width, int height)
@@ -47,7 +47,7 @@ void Board::initTilesMap(int width, int height)
             p.y = j;
             ValueTile *tile = new ValueTile();
 
-            tilesMap[p] = tile;
+            this->tilesMap[p] = tile;
         }
     }
 }
@@ -56,7 +56,7 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
 {
     for (Position &position : bombsPositions) {
         BombTile *bombTile = new BombTile();
-        tilesMap[position] = bombTile;
+        this->tilesMap[position] = bombTile;
         incrementValuesForAllTilesAtPositions(adjacentPositionsForPosition(position));
     }
 }
@@ -98,7 +98,7 @@ void Board::printMap()
 void Board::incrementValuesForAllTilesAtPositions(Positions positions)
 {
     for (Position &position : positions) {
-        Tile *tile = tilesMap[position];
+        Tile *tile = this->tilesMap[position];
         if (isTileBomb(tile)) { continue; }
 
         ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
@@ -130,7 +130,7 @@ bool Board::isTileBomb(Tile *tile)
 
 void Board::openPositionAndNeighbours(Position position)
 {
-    Tile *tile = tilesMap[position];
+    Tile *tile = this->tilesMap[position];
     tile->isUncovered = true;
 
     for (auto &i : adjacentPositionsForPosition(position)) {
@@ -143,8 +143,8 @@ Positions Board::adjacentPositionsForPosition(Position position)
     Positions adjacentPositions;
     int startPointX = max(position.x - 1, 0);
     int startPointY = max(position.y - 1, 0);
-    int endPointX = min(position.x + 2, width - 1);
-    int endPointY = min(position.y + 2, height - 1);
+    int endPointX = min(position.x + 2, this->width - 1);
+    int endPointY = min(position.y + 2, this->height - 1);
 
     for (int x = startPointX; x < endPointX; x++) {
         for (int y = startPointY; y < endPointY; y++) {
