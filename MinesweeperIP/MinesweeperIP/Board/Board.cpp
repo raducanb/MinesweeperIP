@@ -12,7 +12,7 @@
 #include "ValueTile.hpp"
 
 #include <time.h>
-#include <iostream>
+#include <cstdlib>
 #include <set>
 
 Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs);
@@ -84,7 +84,7 @@ string stringForTile(Tile *tile, bool forceUncover)
     }
 }
 
-void Board::printMap(bool forceUncover)
+string Board::mapDisplayString(bool forceUncover)
 {
     string mapString;
     for(auto const &posAndTile : this->tilesMap) {
@@ -94,7 +94,7 @@ void Board::printMap(bool forceUncover)
         tileString.append(isLastItemOnLine ? "\n" : " ");
         mapString.append(tileString);
     }
-    cout << mapString << "\n";
+    return mapString;
 }
 
 void Board::incrementValuesForAllTilesAtPositions(Positions positions)

@@ -14,6 +14,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ public:
     static bool isTileBomb(Tile *tile);
     void openPositionAndNeighboursIfAny(Position position);
     void toggleFlagForTileAtPosition(Position position);
-    void printMap(bool forceUncover);
+    string mapDisplayString(bool forceUncover);
 };
 
 #endif /* Board_hpp */
