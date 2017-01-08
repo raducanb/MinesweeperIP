@@ -15,6 +15,6 @@ struct Position {
     }
 
     bool operator<(const Position &o) const {
-        return x < o.x || (x == o.x && y < o.y);
+        return y < o.y || (y == o.y && x < o.x);
     }
 };
