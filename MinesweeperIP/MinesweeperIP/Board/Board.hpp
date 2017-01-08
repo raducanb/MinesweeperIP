@@ -33,6 +33,7 @@ public:
     ~Board();
     static bool isTileBomb(Tile *tile);
     void openPositionAndNeighbours(Position position);
+    void printMap();
 };
 
 #endif /* Board_hpp */

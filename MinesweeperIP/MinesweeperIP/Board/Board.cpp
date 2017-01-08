@@ -61,6 +61,40 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
     }
 }
 
+string stringForUncoveredTile(Tile *tile)
+{
+    if (Board::isTileBomb(tile)) {
+        return "B";
+    } else {
+        ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
+        return to_string(valueTile->value);
+    }
+}
+
+string stringForTile(Tile *tile)
+{
+    if (tile->isUncovered) {
+        return stringForUncoveredTile(tile);
+    } else if (tile->isFlagged) {
+        return "F";
+    } else {
+        return ".";
+    }
+}
+
+void Board::printMap()
+{
+    string mapString;
+    for(auto const &posAndTile : this->tilesMap) {
+        string tileString = ::stringForTile(posAndTile.second);
+        int xPos = posAndTile.first.x;
+        bool isLastItemOnLine = xPos == (this->width - 1);
+        tileString.append(isLastItemOnLine ? "\n" : " ");
+        mapString.append(tileString);
+    }
+    cout << mapString;
+}
+
 void Board::incrementValuesForAllTilesAtPositions(Positions positions)
 {
     for (Position &position : positions) {
