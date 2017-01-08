@@ -131,6 +131,9 @@ bool Board::isTileBomb(Tile *tile)
 void Board::openPositionAndNeighbours(Position position)
 {
     Tile *tile = this->tilesMap[position];
+    bool shouldStop = isTileBomb(tile) || tile->isUncovered;
+    if (shouldStop) { return; }
+
     tile->isUncovered = true;
 
     for (auto &i : adjacentPositionsForPosition(position)) {
