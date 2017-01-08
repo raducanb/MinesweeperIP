@@ -111,7 +111,7 @@ void Game::userSelectedOption(MenuOption option)
 void Game::startGame()
 {
     this->board = new Board();
-
+    cout << "\nIncepe jocul\n";
     gameLoop();
 }
 
