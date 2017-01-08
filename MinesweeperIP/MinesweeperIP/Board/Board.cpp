@@ -23,10 +23,8 @@ int generateRandomNumberSmallerThan(int max)
 }
 
 Board::Board(int width, int height, int numberOfBombs)
+            : width(width), height(height)
 {
-    this->width = width;
-    this->height = height;
-
     initTilesMap(width, height);
     addBombsToTilesMapAtPositions(generateBombsPositions(width, height, numberOfBombs));
 }

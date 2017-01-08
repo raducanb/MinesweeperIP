@@ -21,14 +21,15 @@ typedef vector<Position> Positions;
 class Board {
 private:
     map<Position, Tile *> tilesMap;
-    int width;
-    int height;
 
     Positions adjacentPositionsForPosition(Position position);
     void initTilesMap(int width, int height);
     void addBombsToTilesMapAtPositions(Positions bombsPositions);
     void incrementValuesForAllTilesAtPositions(Positions positions);
 public:
+    const int width;
+    const int height;
+
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
     static bool isTileBomb(Tile *tile);
