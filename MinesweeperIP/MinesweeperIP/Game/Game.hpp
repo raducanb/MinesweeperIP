@@ -21,6 +21,7 @@ private:
     void userSelectedOption(MenuOption option);
     void flagTile();
     void openTile();
+    void printMap();
     Position inputPosition();
 public:
     void startGame();

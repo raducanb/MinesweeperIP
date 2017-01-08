@@ -72,6 +72,11 @@ void Game::openTile()
     this->board->openPositionAndNeighboursIfAny(p);
 }
 
+void Game::printMap()
+{
+    cout << this->board->mapDisplayString();
+}
+
 void Game::userSelectedOption(MenuOption option)
 {
     switch (option) {
@@ -80,12 +85,14 @@ void Game::userSelectedOption(MenuOption option)
             break;
         case MenuOptionOpenTile:
             openTile();
+            printMap();
             break;
         case MenuOptionFlagTile:
             flagTile();
+            printMap();
             break;
         case MenuOptionPrintMap:
-            cout << this->board->mapDisplayString(false);
+            printMap();
             break;
     }
 }
