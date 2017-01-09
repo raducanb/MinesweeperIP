@@ -69,32 +69,11 @@ void Board::toggleFlagForTileAtPosition(Position position)
     tile->isFlagged = !tile->isFlagged;
 }
 
-string stringForUncoveredTile(Tile *tile)
-{
-    if (isTileBomb(tile)) {
-        return "B";
-    } else {
-        ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
-        return to_string(valueTile->value);
-    }
-}
-
-string stringForTile(Tile *tile, bool forceUncover)
-{
-    if (tile->isUncovered || forceUncover) {
-        return stringForUncoveredTile(tile);
-    } else if (tile->isFlagged) {
-        return "F";
-    } else {
-        return ".";
-    }
-}
-
 string Board::mapDisplayString(bool forceUncover)
 {
     string mapString;
     for(auto const &posAndTile : this->tilesMap) {
-        string tileString = ::stringForTile(posAndTile.second, forceUncover);
+        string tileString = posAndTile.second->displayString();
         int xPos = posAndTile.first.x;
         bool isLastItemOnLine = xPos == (this->width - 1);
         tileString.append(isLastItemOnLine ? "\n" : " ");

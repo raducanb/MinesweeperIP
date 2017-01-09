@@ -12,6 +12,10 @@
 #include "Tile.hpp"
 
 struct BombTile : Tile {
+    virtual string displayString() {
+        string a = Tile::displayString();
+        return a.empty() ? "B" : a;
+    }
 };
 
 #endif /* BombTile_hpp */

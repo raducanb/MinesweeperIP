@@ -9,10 +9,23 @@
 #ifndef Tile_hpp
 #define Tile_hpp
 
+#include <string>
+
+using namespace std;
+
 struct Tile {
     bool isFlagged = false;
     bool isUncovered = false;
     virtual ~Tile() {};
+    
+    virtual string displayString() {
+        if (this->isFlagged) {
+            return "F";
+        } else if (!this->isUncovered) {
+            return ".";
+        }
+        return "";
+    };
 };
 
 #endif /* Tile_hpp */
