@@ -10,6 +10,8 @@
 
 #include "Tile.hpp"
 
+#include "Game.hpp"
+
 using namespace std;
 
 int main(int argc, const char * argv[])
@@ -19,5 +21,8 @@ int main(int argc, const char * argv[])
     Tile tile;
     tile.isFlagged = true;
 
+    Game g;
+    g.startGame();
+    
     return 0;
 }
