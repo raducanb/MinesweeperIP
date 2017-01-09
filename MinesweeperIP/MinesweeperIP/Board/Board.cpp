@@ -110,6 +110,12 @@ Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs)
     return Positions(bombsPositions.begin(), bombsPositions.end());
 }
 
+bool Board::canOpenTileAtPosition(Position position)
+{
+    Tile *tile = this->tilesMap[position];
+    return !tile->isFlagged;
+}
+
 void Board::openTileAtPosition(Position position, bool isFirstTime)
 {
     Tile *tile = this->tilesMap[position];
