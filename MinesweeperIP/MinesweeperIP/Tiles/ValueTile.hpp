@@ -12,7 +12,6 @@
 #include "Tile.hpp"
 
 struct ValueTile : Tile {
-public:
     int value = 0;
 };
 

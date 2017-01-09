@@ -10,7 +10,6 @@
 #define Tile_hpp
 
 struct Tile {
-public:
     bool isFlagged = false;
     bool isUncovered = false;
     virtual ~Tile() {};
