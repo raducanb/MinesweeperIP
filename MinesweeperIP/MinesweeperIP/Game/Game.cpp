@@ -97,7 +97,7 @@ void Game::openTile()
 
 void Game::printMap()
 {
-    cout << this->board->mapDisplayString();
+    cout << "\n" << this->board->mapDisplayString() << "\n";
 }
 
 void Game::userSelectedOption(MenuOption option)
