@@ -74,7 +74,13 @@ Position Game::inputPosition()
 void Game::flagTile()
 {
     Position p = inputPosition();
-    this->board->toggleFlagForTileAtPosition(p);
+    if (this->board->canToggleFlagForTileAtPosition(p)) {
+        this->board->toggleFlagForTileAtPosition(p);
+    } else {
+        cout << "Poziția nu poate fi marcată pentru că este selectată\n";
+        flagTile();
+        return;
+    }
 }
 
 void Game::openTile()
