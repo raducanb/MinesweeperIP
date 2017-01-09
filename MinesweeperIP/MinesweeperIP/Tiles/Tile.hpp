@@ -26,6 +26,7 @@ struct Tile {
         return "";
     };
     virtual void incrementValue() {};
+    virtual bool canOpenAdjacentPositions() = 0;
 };
 
 #endif /* Tile_hpp */

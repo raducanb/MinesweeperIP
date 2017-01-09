@@ -104,17 +104,13 @@ void Board::openTileAtPosition(Position position, bool isFirstTime)
 
     tile->isUncovered = true;
 
-    openAdjacentPositionsForTileAtPosition(position);
+    openAdjacentPositionsForTileAtPosition(tile, position);
 }
 
-void Board::openAdjacentPositionsForTileAtPosition(Position position)
+void Board::openAdjacentPositionsForTileAtPosition(Tile *tile, Position position)
 {
-    ValueTile *valueTile = dynamic_cast<ValueTile *>(this->tilesMap[position]);
-    if (valueTile == nullptr) { return; }
-
-    bool shouldOpenAdjacentPositions = (valueTile->value == 0);
-    if (!shouldOpenAdjacentPositions) { return; }
-
+    if (!tile->canOpenAdjacentPositions()) { return; }
+    
     for (auto &i : position.adjacentPositionsForMaxXMaxY(this->width, this->height)) {
         openTileAtPosition(i, false);
     }

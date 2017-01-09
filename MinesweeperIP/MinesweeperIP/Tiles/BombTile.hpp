@@ -16,6 +16,9 @@ struct BombTile : Tile {
         string a = Tile::displayString();
         return a.empty() ? "B" : a;
     }
+    virtual bool canOpenAdjacentPositions() {
+        return false;
+    }
 };
 
 #endif /* BombTile_hpp */
