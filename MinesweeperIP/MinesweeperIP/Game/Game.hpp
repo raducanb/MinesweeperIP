@@ -21,7 +21,7 @@ private:
     void userSelectedOption(MenuOption option);
     void flagTile();
     void openTile();
-    void printMap();
+    void printMapAndForceUncover(bool forceUncover = false);
     Position inputPosition();
     void gameLoop();
     MenuOption optionFromMenu();

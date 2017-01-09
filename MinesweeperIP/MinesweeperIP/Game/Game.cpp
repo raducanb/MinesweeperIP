@@ -91,9 +91,9 @@ void Game::openTile()
     }
 }
 
-void Game::printMap()
+void Game::printMapAndForceUncover(bool forceUncover)
 {
-    cout << "\n" << this->board->mapDisplayString(true) << "\n";
+    cout << "\n" << this->board->mapDisplayString(forceUncover) << "\n";
 }
 
 void Game::userSelectedOption(MenuOption option)
@@ -104,14 +104,14 @@ void Game::userSelectedOption(MenuOption option)
             break;
         case MenuOptionOpenTile:
             openTile();
-            printMap();
+            printMapAndForceUncover();
             break;
         case MenuOptionFlagTile:
             flagTile();
-            printMap();
+            printMapAndForceUncover();
             break;
         case MenuOptionPrintMap:
-            printMap();
+            printMapAndForceUncover();
             break;
     }
 }
@@ -149,7 +149,7 @@ void Game::gameLoop()
     } else if (didLose) {
         printDidLoseMessage();
         this->board->uncoverAllBombs();
-        printMap();
+        printMapAndForceUncover();
     }
 
     if (didWin || didLose) {
