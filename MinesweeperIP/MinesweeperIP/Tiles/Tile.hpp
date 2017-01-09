@@ -25,6 +25,7 @@ struct Tile {
         }
         return "";
     };
+    virtual void incrementValue() {};
 };
 
 #endif /* Tile_hpp */

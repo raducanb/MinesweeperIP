@@ -17,6 +17,9 @@ struct ValueTile : Tile {
         string a = Tile::displayString();
         return a.empty() ? to_string(this->value) : a;
     }
+    virtual void incrementValue() {
+        this->value++;
+    }
 };
 
 #endif /* ValueTile_hpp */

@@ -86,10 +86,7 @@ void Board::incrementValuesForAllTilesAtPositions(Positions positions)
 {
     for (Position &position : positions) {
         Tile *tile = this->tilesMap[position];
-        if (isTileBomb(tile)) { continue; }
-
-        ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
-        valueTile->value++;
+        tile->incrementValue();
     }
 }
 
