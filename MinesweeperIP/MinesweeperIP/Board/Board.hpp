@@ -9,7 +9,7 @@
 #ifndef Board_hpp
 #define Board_hpp
 
-#include "Position.cpp"
+#include "MapLogic.cpp"
 #include "Tile.hpp"
 
 #include <map>

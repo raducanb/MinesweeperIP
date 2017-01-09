@@ -12,15 +12,7 @@
 #include "ValueTile.hpp"
 
 #include <time.h>
-#include <cstdlib>
 #include <set>
-
-Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs);
-
-int generateRandomNumberSmallerThan(int max)
-{
-    return rand() % max;
-}
 
 bool isTileBomb(Tile *tile)
 {
@@ -31,7 +23,8 @@ Board::Board(int width, int height, int numberOfBombs)
             : width(width), height(height), numberOfBombs(numberOfBombs)
 {
     initTilesMap(width, height);
-    addBombsToTilesMapAtPositions(generateBombsPositions(width, height, numberOfBombs));
+    Positions positions = MapLogic::generateBombsPositions(width, height, numberOfBombs);
+    addBombsToTilesMapAtPositions(positions);
 }
 
 Board::~Board()
@@ -88,23 +81,6 @@ void Board::incrementValuesForAllTilesAtPositions(Positions positions)
         Tile *tile = this->tilesMap[position];
         tile->incrementValue();
     }
-}
-
-Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs)
-{
-    set<Position> bombsPositions;
-
-    srand((unsigned int)time(NULL));
-    do {
-        Position p;
-        int x = generateRandomNumberSmallerThan(maxWidth);
-        int y = generateRandomNumberSmallerThan(maxHeight);
-        p.x = x;
-        p.y = y;
-        bombsPositions.insert(p);
-    } while (bombsPositions.size() < numberOfBombs);
-
-    return Positions(bombsPositions.begin(), bombsPositions.end());
 }
 
 bool Board::canOpenTileAtPosition(Position position)
