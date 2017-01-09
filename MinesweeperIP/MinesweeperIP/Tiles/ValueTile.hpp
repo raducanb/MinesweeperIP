@@ -11,7 +11,7 @@
 
 #include "Tile.hpp"
 
-struct ValueTile : public Tile {
+struct ValueTile : Tile {
 public:
     int value = 0;
 };
