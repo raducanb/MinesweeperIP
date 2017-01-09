@@ -78,8 +78,6 @@ void Game::flagTile()
         this->board->toggleFlagForTileAtPosition(p);
     } else {
         cout << "Poziția nu poate fi marcată pentru că este selectată\n";
-        flagTile();
-        return;
     }
 }
 
@@ -90,14 +88,12 @@ void Game::openTile()
         this->board->openTileAtPosition(p);
     } else {
         cout << "Poziția nu poate fi selectată pentru că este marcată\n";
-        openTile();
-        return;
     }
 }
 
 void Game::printMap()
 {
-    cout << "\n" << this->board->mapDisplayString() << "\n";
+    cout << "\n" << this->board->mapDisplayString(true) << "\n";
 }
 
 void Game::userSelectedOption(MenuOption option)
