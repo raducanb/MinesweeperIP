@@ -10,8 +10,10 @@
 #include <set>
 #include <vector>
 #include <cstdlib>
+#include <map>
 
 #include "Position.cpp"
+#include "Tile.hpp"
 
 using namespace std;
 
@@ -38,5 +40,17 @@ struct MapLogic {
         } while (bombsPositions.size() < numberOfBombs);
 
         return Positions(bombsPositions.begin(), bombsPositions.end());
+    }
+
+    static string displayStringForMap(map<Position, Tile *> map, int width, bool forceUncover) {
+        string mapString;
+        for(auto const &posAndTile : map) {
+            string tileString = posAndTile.second->displayString(forceUncover);
+            int xPos = posAndTile.first.x;
+            bool isLastItemOnLine = xPos == (width - 1);
+            tileString.append(isLastItemOnLine ? "\n" : " ");
+            mapString.append(tileString);
+        }
+        return mapString;
     }
 };

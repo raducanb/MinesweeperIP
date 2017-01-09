@@ -64,15 +64,7 @@ void Board::toggleFlagForTileAtPosition(Position position)
 
 string Board::mapDisplayString(bool forceUncover)
 {
-    string mapString;
-    for(auto const &posAndTile : this->tilesMap) {
-        string tileString = posAndTile.second->displayString(forceUncover);
-        int xPos = posAndTile.first.x;
-        bool isLastItemOnLine = xPos == (this->width - 1);
-        tileString.append(isLastItemOnLine ? "\n" : " ");
-        mapString.append(tileString);
-    }
-    return mapString;
+    return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover);
 }
 
 void Board::incrementValuesForAllTilesAtPositions(Positions positions)
