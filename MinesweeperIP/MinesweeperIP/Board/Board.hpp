@@ -36,6 +36,7 @@ public:
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
     bool canOpenTileAtPosition(Position position);
+    bool canToggleFlagForTileAtPosition(Position position);
     void openTileAtPosition(Position position, bool isFirstTime = true);
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);

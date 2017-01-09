@@ -116,6 +116,12 @@ bool Board::canOpenTileAtPosition(Position position)
     return !tile->isFlagged;
 }
 
+bool Board::canToggleFlagForTileAtPosition(Position position)
+{
+    Tile *tile = this->tilesMap[position];
+    return !tile->isUncovered;
+}
+
 void Board::openTileAtPosition(Position position, bool isFirstTime)
 {
     Tile *tile = this->tilesMap[position];
