@@ -23,6 +23,7 @@ struct MenuValues {
         values[MenuOptionOpenTile] = "Selectează poziție";
         values[MenuOptionFlagTile] = "Marchează poziție";
         values[MenuOptionNewGame] = "Întrerupe joc și pornește unul nou";
+        values[MenuOptionPrintUncoveredMap] = "Printează harta descoperită";
         return values;
     }
     static const MenuValuesMap menuValuesMap;

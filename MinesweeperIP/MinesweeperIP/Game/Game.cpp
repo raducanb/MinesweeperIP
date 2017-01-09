@@ -113,6 +113,9 @@ void Game::userSelectedOption(MenuOption option)
         case MenuOptionPrintMap:
             printMapAndForceUncover();
             break;
+        case MenuOptionPrintUncoveredMap:
+            printMapAndForceUncover(true);
+            break;
     }
 }
 
