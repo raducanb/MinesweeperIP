@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 struct Position {
     typedef vector<Position> Positions;
 
