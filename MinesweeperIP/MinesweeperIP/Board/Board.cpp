@@ -58,7 +58,7 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
     for (Position &position : bombsPositions) {
         BombTile *bombTile = new BombTile();
         this->tilesMap[position] = bombTile;
-        auto adjacentPositions = this->tilesMap.adjacentPositionsForPosition(position, this->width, this->height);
+        auto adjacentPositions = position.adjacentPositionsForMaxXMaxY(this->width, this->height);
         incrementValuesForAllTilesAtPositions(adjacentPositions);
     }
 }
