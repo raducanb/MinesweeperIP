@@ -80,7 +80,13 @@ void Game::flagTile()
 void Game::openTile()
 {
     Position p = inputPosition();
-    this->board->openTileAtPosition(p);
+    if(this->board->canOpenTileAtPosition(p)) {
+        this->board->openTileAtPosition(p);
+    } else {
+        cout << "Poziția nu poate fi selectată pentru că este marcată\n";
+        openTile();
+        return;
+    }
 }
 
 void Game::printMap()
