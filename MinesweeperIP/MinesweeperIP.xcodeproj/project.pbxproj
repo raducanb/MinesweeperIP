@@ -88,8 +88,8 @@
 		6EE21B8E1E2288FB000A46DF /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				6EE21B8F1E228904000A46DF /* Menu.cpp */,
 				6EE21B901E228904000A46DF /* Menu.hpp */,
+				6EE21B8F1E228904000A46DF /* Menu.cpp */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
