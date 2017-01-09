@@ -17,7 +17,7 @@ struct Tile {
     bool isFlagged = false;
     bool isUncovered = false;
     
-    virtual string displayString() {
+    virtual string displayString(bool forceUncover = false) {
         if (this->isFlagged) {
             return "F";
         } else if (!this->isUncovered) {

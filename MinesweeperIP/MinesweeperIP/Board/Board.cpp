@@ -66,7 +66,7 @@ string Board::mapDisplayString(bool forceUncover)
 {
     string mapString;
     for(auto const &posAndTile : this->tilesMap) {
-        string tileString = posAndTile.second->displayString();
+        string tileString = posAndTile.second->displayString(forceUncover);
         int xPos = posAndTile.first.x;
         bool isLastItemOnLine = xPos == (this->width - 1);
         tileString.append(isLastItemOnLine ? "\n" : " ");

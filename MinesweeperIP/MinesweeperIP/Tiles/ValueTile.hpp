@@ -13,9 +13,9 @@
 
 struct ValueTile : Tile {
     int value = 0;
-    virtual string displayString() {
+    virtual string displayString(bool forceUncover) {
         string a = Tile::displayString();
-        return a.empty() ? to_string(this->value) : a;
+        return a.empty() || forceUncover ? to_string(this->value) : a;
     }
     virtual void incrementValue() {
         this->value++;
