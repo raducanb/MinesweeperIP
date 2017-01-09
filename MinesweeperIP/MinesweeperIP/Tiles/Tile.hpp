@@ -16,7 +16,6 @@ using namespace std;
 struct Tile {
     bool isFlagged = false;
     bool isUncovered = false;
-    virtual ~Tile() {};
     
     virtual string displayString() {
         if (this->isFlagged) {
