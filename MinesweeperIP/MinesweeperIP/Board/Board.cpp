@@ -71,7 +71,7 @@ void Board::toggleFlagForTileAtPosition(Position position)
 
 string stringForUncoveredTile(Tile *tile)
 {
-    if (Board::isTileBomb(tile)) {
+    if (isTileBomb(tile)) {
         return "B";
     } else {
         ValueTile *valueTile = dynamic_cast<ValueTile *>(tile);
