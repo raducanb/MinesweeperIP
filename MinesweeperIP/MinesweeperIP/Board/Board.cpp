@@ -22,7 +22,9 @@ int generateRandomNumberSmallerThan(int max)
     return rand() % max;
 }
 
+bool isTileBomb(Tile *tile)
 {
+    return (typeid(*tile) == typeid(BombTile));
 }
 
 Board::Board(int width, int height, int numberOfBombs)
@@ -127,11 +129,6 @@ Positions generateBombsPositions(int maxWidth, int maxHeight, int numberOfBombs)
     } while (bombsPositions.size() < numberOfBombs);
 
     return Positions(bombsPositions.begin(), bombsPositions.end());
-}
-
-bool Board::isTileBomb(Tile *tile)
-{
-    return (typeid(*tile) == typeid(BombTile));
 }
 
 void Board::openTileAtPosition(Position position, bool isFirstTime)
