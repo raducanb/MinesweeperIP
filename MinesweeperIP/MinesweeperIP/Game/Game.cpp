@@ -152,6 +152,8 @@ void Game::gameLoop()
         printDidWinMessage();
     } else if (didLose) {
         printDidLoseMessage();
+        this->board->uncoverAllBombs();
+        printMap();
     }
 
     if (didWin || didLose) {
