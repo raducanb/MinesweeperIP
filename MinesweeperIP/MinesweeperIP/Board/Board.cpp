@@ -22,27 +22,7 @@ int generateRandomNumberSmallerThan(int max)
     return rand() % max;
 }
 
-Positions adjacentPositionsForPosition(Position position, int maxX, int maxY)
 {
-    Positions adjacentPositions;
-    int startPointX = max(position.x - 1, 0);
-    int startPointY = max(position.y - 1, 0);
-    int endPointX = min(position.x + 2, maxX);
-    int endPointY = min(position.y + 2, maxY);
-
-    for (int x = startPointX; x < endPointX; x++) {
-        for (int y = startPointY; y < endPointY; y++) {
-            bool isPositionRedundant = (x == position.x && y == position.y);
-            if (isPositionRedundant) { continue; }
-
-            Position p;
-            p.x = x;
-            p.y = y;
-            adjacentPositions.push_back(p);
-        }
-    }
-
-    return adjacentPositions;
 }
 
 Board::Board(int width, int height, int numberOfBombs)
@@ -76,7 +56,7 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
     for (Position &position : bombsPositions) {
         BombTile *bombTile = new BombTile();
         this->tilesMap[position] = bombTile;
-        auto adjacentPositions = adjacentPositionsForPosition(position, this->width, this->height);
+        auto adjacentPositions = this->tilesMap.adjacentPositionsForPosition(position, this->width, this->height);
         incrementValuesForAllTilesAtPositions(adjacentPositions);
     }
 }
@@ -174,7 +154,7 @@ void Board::openAdjacentPositionsForTileAtPosition(Position position)
     bool shouldOpenAdjacentPositions = (valueTile->value == 0);
     if (!shouldOpenAdjacentPositions) { return; }
 
-    for (auto &i : adjacentPositionsForPosition(position, this->width, this->height)) {
+    for (auto &i : position.adjacentPositionsForMaxXMaxY(this->width, this->height)) {
         openTileAtPosition(i, false);
     }
 }
