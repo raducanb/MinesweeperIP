@@ -130,3 +130,12 @@ int Board::numberOfUncoveredTiles()
     }
     return uncoveredTilesNumber;
 }
+
+void Board::uncoverAllBombs()
+{
+    for (auto &i : this->tilesMap) {
+        Tile *tile = i.second;
+        if (!isTileBomb(tile)) { continue; }
+        tile->isUncovered = true;
+    }
+}

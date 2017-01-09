@@ -42,6 +42,7 @@ public:
     string mapDisplayString(bool forceUncover = false);
     bool hasABombTileSelected();
     int numberOfUncoveredTiles();
+    void uncoverAllBombs();
 };
 
 #endif /* Board_hpp */
