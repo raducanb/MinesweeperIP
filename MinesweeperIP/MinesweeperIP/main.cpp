@@ -16,8 +16,12 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    Game g;
-    g.startGame();
+    Board *simpleBoard = new Board(2, 2, 1);
+    Game simpleGame(simpleBoard);
+    simpleGame.startGame();
+
+    Game normalGame;
+    normalGame.startGame();
     
     return 0;
 }
