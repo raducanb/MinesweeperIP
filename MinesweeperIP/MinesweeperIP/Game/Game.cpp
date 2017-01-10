@@ -125,7 +125,7 @@ void Game::userSelectedOption(MenuOption option)
 
 void Game::startGameWithSameConfiguration()
 {
-    this->board = new Board(this->board->width, this->board->height);
+    this->board = new Board(this->board->width, this->board->height, this->board->numberOfBombs);
     startGame();
 }
 
@@ -165,7 +165,7 @@ void Game::gameLoop()
     }
 
     if (didWin || didLose) {
-        startGame();
+        startGameWithSameConfiguration();
         return;
     }
 
