@@ -59,6 +59,8 @@ void printDidLoseMessage()
     cout << "\nAi pierdut.\n";
 }
 
+Game::Game(Board *board) : board(board) { }
+
 Position Game::inputPosition()
 {
     Position p;
@@ -100,7 +102,7 @@ void Game::userSelectedOption(MenuOption option)
 {
     switch (option) {
         case MenuOptionNewGame:
-            startGame();
+            startGameWithSameConfiguration();
             break;
         case MenuOptionOpenTile:
             openTile();
@@ -121,9 +123,14 @@ void Game::userSelectedOption(MenuOption option)
     }
 }
 
+void Game::startGameWithSameConfiguration()
+{
+    this->board = new Board(this->board->width, this->board->height);
+    startGame();
+}
+
 void Game::startGame()
 {
-    this->board = new Board();
     cout << "\nIncepe jocul\n";
     gameLoop();
 }

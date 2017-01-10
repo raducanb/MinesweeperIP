@@ -25,7 +25,9 @@ private:
     Position inputPosition();
     void gameLoop();
     MenuOption optionFromMenu();
+    void startGameWithSameConfiguration();
 public:
+    Game(Board *board = new Board());
     void startGame();
 };
 
