@@ -131,7 +131,7 @@ void Game::startGameWithSameConfiguration()
 
 void Game::startGame()
 {
-    cout << "\nIncepe jocul\n";
+    cout << "\nJocul incepe\n" << endl;
     gameLoop();
 }
 

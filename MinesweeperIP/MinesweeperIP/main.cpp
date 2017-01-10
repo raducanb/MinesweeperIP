@@ -16,6 +16,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+    cout << "Minesweeper!" << endl;
+    
     Game g;
     g.startGame();
     
