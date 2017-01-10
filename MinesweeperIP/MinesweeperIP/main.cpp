@@ -16,6 +16,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+    cout << "Minesweeper!" << endl;
+
     Board *simpleBoard = new Board(2, 2, 1);
     Game simpleGame(simpleBoard);
     simpleGame.startGame();
