@@ -116,6 +116,8 @@ void Game::userSelectedOption(MenuOption option)
         case MenuOptionPrintUncoveredMap:
             printMapAndForceUncover(true);
             break;
+        case MenuOptionEndGame:
+            break;
     }
 }
 
@@ -137,7 +139,7 @@ void Game::gameLoop()
     MenuOption option = optionFromMenu();
     userSelectedOption(option);
 
-    if (option == MenuOptionNewGame) { return; }
+    if (option == MenuOptionNewGame || option == MenuOptionEndGame) { return; }
 
     bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
     if (!shouldCheckForEndGame) {

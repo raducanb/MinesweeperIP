@@ -20,7 +20,8 @@ enum MenuOption {
     MenuOptionOpenTile = 2,
     MenuOptionFlagTile = 3,
     MenuOptionNewGame = 4,
-    MenuOptionPrintUncoveredMap = 5
+    MenuOptionPrintUncoveredMap = 5,
+    MenuOptionEndGame
 };
 
 class Menu {
