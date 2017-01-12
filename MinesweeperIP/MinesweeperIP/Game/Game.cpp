@@ -154,13 +154,14 @@ void Game::gameLoop()
 
     if (option == MenuOptionNewGame || option == MenuOptionEndGame) { return; }
 
-    bool shouldCheckForEndGame = (option == MenuOptionOpenTile);
+    bool shouldCheckForEndGame = (option == MenuOptionOpenTile || option == MenuOptionFlagTile);
     if (!shouldCheckForEndGame) {
         gameLoop();
         return;
     }
 
-    bool didWin = (this->board->numberOfCoveredTiles() == this->board->numberOfBombs);
+    bool didWin = (this->board->numberOfCoveredTiles() == this->board->numberOfBombs
+                   || this->board->numberOfFlaggedBombs == this->board->numberOfBombs);
     bool didLose = this->board->hasABombTileSelected();
     if (didWin) {
         printDidWinMessage();
