@@ -26,7 +26,7 @@ private:
 
     void initTilesMap(int width, int height);
     void addBombsToTilesMapAtPositions(Positions bombsPositions);
-    void incrementValuesForAllTilesAtPositions(Positions positions);
+    void modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement);
     void openAdjacentPositionsForTileAtPosition(Tile *, Position position);
 public:
     const int width;

@@ -53,7 +53,7 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
         BombTile *bombTile = new BombTile();
         this->tilesMap[position] = bombTile;
         auto adjacentPositions = position.adjacentPositionsForMaxXMaxY(this->width, this->height);
-        incrementValuesForAllTilesAtPositions(adjacentPositions);
+        modifyValuesForTilesAtPositions(adjacentPositions, true);
     }
 }
 
@@ -68,11 +68,11 @@ string Board::mapDisplayString(bool forceUncover)
     return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover);
 }
 
-void Board::incrementValuesForAllTilesAtPositions(Positions positions)
+void Board::modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement)
 {
     for (Position &position : positions) {
         Tile *tile = this->tilesMap[position];
-        tile->incrementValue();
+        shouldIncrement ? tile->incrementValue() : tile->decrementValue();
     }
 }
 
