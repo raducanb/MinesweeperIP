@@ -28,6 +28,7 @@ private:
     void addBombsToTilesMapAtPositions(Positions bombsPositions);
     void modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement);
     void openAdjacentPositionsForTileAtPosition(Tile *, Position position);
+    Position firstTilePositionThatIsNotBomb();
 public:
     const int width;
     const int height;
@@ -44,6 +45,7 @@ public:
     bool hasABombTileSelected();
     int numberOfCoveredTiles();
     void uncoverAllBombs();
+    void replaceTileAtPositionIfIsBomb(Position position);
 };
 
 #endif /* Board_hpp */

@@ -134,3 +134,33 @@ void Board::uncoverAllBombs()
         tile->isUncovered = true;
     }
 }
+
+void Board::replaceTileAtPositionIfIsBomb(Position position)
+{
+    Tile *tile = this->tilesMap[position];
+    if (!isTileBomb(tile)) { return; }
+
+    Position p = this->firstTilePositionThatIsNotBomb();
+
+    modifyValuesForTilesAtPositions(position.adjacentPositionsForMaxXMaxY(this->width, this->height), false);
+    modifyValuesForTilesAtPositions(p.adjacentPositionsForMaxXMaxY(this->width, this->height), true);
+
+    this->tilesMap[position] = this->tilesMap[p];
+    this->tilesMap[p] = tile;
+}
+
+Position Board::firstTilePositionThatIsNotBomb()
+{
+    for (int x = 0; x < this->width; x++) {
+        for (int y = 0; y < this->height; y++) {
+            Position p;
+            p.x = x;
+            p.y = y;
+
+            Tile *tile = this->tilesMap[p];
+            if (isTileBomb(tile)) { continue; }
+            return p;
+        }
+    }
+    return Position();
+}
