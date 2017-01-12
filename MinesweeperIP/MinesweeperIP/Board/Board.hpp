@@ -23,6 +23,7 @@ typedef vector<Position> Positions;
 class Board {
 private:
     map<Position, Tile *> tilesMap;
+    int numberOfFlags;
 
     void initTilesMap(int width, int height);
     void addBombsToTilesMapAtPositions(Positions bombsPositions);

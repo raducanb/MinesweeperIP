@@ -79,7 +79,7 @@ void Game::flagTile()
     if (this->board->canToggleFlagForTileAtPosition(p)) {
         this->board->toggleFlagForTileAtPosition(p);
     } else {
-        cout << "Poziția nu poate fi marcată pentru că este selectată\n";
+        cout << "Poziția nu poate fi marcată pentru că este selectată sau ai prea multe marcaje puse deja\n";
     }
 }
 

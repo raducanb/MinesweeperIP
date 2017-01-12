@@ -61,8 +61,11 @@ void Board::toggleFlagForTileAtPosition(Position position)
     Tile *tile = this->tilesMap[position];
     tile->isFlagged = !tile->isFlagged;
 
+    int addOrRemoveFlag = (tile->isFlagged ? 1 : -1);
+    this->numberOfFlags += addOrRemoveFlag;
+
     if (isTileBomb(tile)) {
-        this->numberOfFlaggedBombs += 1 * (tile->isFlagged ? 1 : -1);
+        this->numberOfFlaggedBombs += addOrRemoveFlag;
     }
 }
 
@@ -87,6 +90,9 @@ bool Board::canOpenTileAtPosition(Position position)
 
 bool Board::canToggleFlagForTileAtPosition(Position position)
 {
+    bool reachedMaximumNumberOfFlags = (this->numberOfFlags == this->numberOfBombs);
+    if (reachedMaximumNumberOfFlags) { return false; }
+
     Tile *tile = this->tilesMap[position];
     return !tile->isUncovered;
 }
