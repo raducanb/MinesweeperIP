@@ -20,6 +20,9 @@ struct ValueTile : Tile {
     virtual void incrementValue() {
         this->value++;
     }
+    virtual void decrementValue() {
+        this->value--;
+    }
     virtual bool canOpenAdjacentPositions() {
         return (this->value == 0);
     }
