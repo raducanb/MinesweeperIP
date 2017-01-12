@@ -60,6 +60,10 @@ void Board::toggleFlagForTileAtPosition(Position position)
 {
     Tile *tile = this->tilesMap[position];
     tile->isFlagged = !tile->isFlagged;
+
+    if (isTileBomb(tile)) {
+        this->numberOfFlaggedBombs += 1 * (tile->isFlagged ? 1 : -1);
+    }
 }
 
 string Board::mapDisplayString(bool forceUncover)

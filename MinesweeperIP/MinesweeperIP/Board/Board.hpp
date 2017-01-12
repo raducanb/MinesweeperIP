@@ -34,6 +34,7 @@ public:
     const int height;
     const int numberOfBombs;
     int numberOfUncoveredTiles;
+    int numberOfFlaggedBombs;
 
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
