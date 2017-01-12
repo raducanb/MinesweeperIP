@@ -30,6 +30,7 @@ Board::Board(int width, int height, int numberOfBombs)
 Board::~Board()
 {
     this->tilesMap.clear();
+    numberOfUncoveredTiles = 0;
 };
 
 void Board::initTilesMap(int width, int height)
@@ -95,6 +96,7 @@ void Board::openTileAtPosition(Position position, bool isCalledRecursively)
     if (shouldStop) { return; }
 
     tile->isUncovered = true;
+    this->numberOfUncoveredTiles++;
 
     openAdjacentPositionsForTileAtPosition(tile, position);
 }
@@ -120,7 +122,6 @@ bool Board::hasABombTileSelected()
     return false;
 }
 
-int Board::numberOfUncoveredTiles()
 {
     int uncoveredTilesNumber = 0;
     for (auto &i : this->tilesMap) {

@@ -32,6 +32,7 @@ public:
     const int width;
     const int height;
     const int numberOfBombs;
+    int numberOfUncoveredTiles;
 
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
@@ -41,7 +42,6 @@ public:
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);
     bool hasABombTileSelected();
-    int numberOfUncoveredTiles();
     void uncoverAllBombs();
 };
 
