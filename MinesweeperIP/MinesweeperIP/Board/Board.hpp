@@ -42,6 +42,7 @@ public:
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);
     bool hasABombTileSelected();
+    int numberOfCoveredTiles();
     void uncoverAllBombs();
 };
 

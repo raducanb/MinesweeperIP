@@ -122,14 +122,9 @@ bool Board::hasABombTileSelected()
     return false;
 }
 
+int Board::numberOfCoveredTiles()
 {
-    int uncoveredTilesNumber = 0;
-    for (auto &i : this->tilesMap) {
-        Tile *tile = i.second;
-        if (tile->isUncovered) { continue; }
-        uncoveredTilesNumber++;
-    }
-    return uncoveredTilesNumber;
+    return (int)this->tilesMap.size() - this->numberOfUncoveredTiles;
 }
 
 void Board::uncoverAllBombs()
