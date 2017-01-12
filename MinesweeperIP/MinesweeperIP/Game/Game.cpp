@@ -86,6 +86,12 @@ void Game::flagTile()
 void Game::openTile()
 {
     Position p = inputPosition();
+
+    bool isFirstMove = (this->board->numberOfUncoveredTiles == 0);
+    if (isFirstMove) {
+        this->board->replaceTileAtPositionIfIsBomb(p);
+    }
+
     if(this->board->canOpenTileAtPosition(p)) {
         this->board->openTileAtPosition(p);
     } else {
