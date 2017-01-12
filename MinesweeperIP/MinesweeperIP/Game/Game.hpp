@@ -19,8 +19,8 @@ private:
     Board *board;
     Menu menu;
     void userSelectedOption(MenuOption option);
-    void flagTile();
-    void openTile();
+    bool flagTile();
+    bool openTile();
     void printMapAndForceUncover(bool forceUncover = false);
     Position inputPosition();
     void gameLoop();

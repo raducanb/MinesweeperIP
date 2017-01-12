@@ -73,17 +73,19 @@ Position Game::inputPosition()
     return p;
 }
 
-void Game::flagTile()
+bool Game::flagTile()
 {
     Position p = inputPosition();
     if (this->board->canToggleFlagForTileAtPosition(p)) {
         this->board->toggleFlagForTileAtPosition(p);
+        return true;
     } else {
         cout << "Poziția nu poate fi marcată pentru că este selectată sau ai prea multe marcaje puse deja\n";
+        return false;
     }
 }
 
-void Game::openTile()
+bool Game::openTile()
 {
     Position p = inputPosition();
 
@@ -94,8 +96,10 @@ void Game::openTile()
 
     if(this->board->canOpenTileAtPosition(p)) {
         this->board->openTileAtPosition(p);
+        return true;
     } else {
         cout << "Poziția nu poate fi selectată pentru că este marcată\n";
+        return false;
     }
 }
 
@@ -110,14 +114,18 @@ void Game::userSelectedOption(MenuOption option)
         case MenuOptionNewGame:
             startGameWithSameConfiguration();
             break;
-        case MenuOptionOpenTile:
-            openTile();
+        case MenuOptionOpenTile: {
+            bool success = openTile();
+            if (!success) { break; }
             printMapAndForceUncover();
             break;
-        case MenuOptionFlagTile:
-            flagTile();
+        }
+        case MenuOptionFlagTile: {
+            bool success = flagTile();
+            if (!success) { break; }
             printMapAndForceUncover();
             break;
+        }
         case MenuOptionPrintMap:
             printMapAndForceUncover();
             break;
