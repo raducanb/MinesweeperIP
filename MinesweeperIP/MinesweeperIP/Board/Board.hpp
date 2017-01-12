@@ -37,7 +37,7 @@ public:
     ~Board();
     bool canOpenTileAtPosition(Position position);
     bool canToggleFlagForTileAtPosition(Position position);
-    void openTileAtPosition(Position position, bool isFirstTime = true);
+    void openTileAtPosition(Position position, bool isCalledRecursively = false);
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);
     bool hasABombTileSelected();

@@ -87,10 +87,10 @@ bool Board::canToggleFlagForTileAtPosition(Position position)
     return !tile->isUncovered;
 }
 
-void Board::openTileAtPosition(Position position, bool isFirstTime)
+void Board::openTileAtPosition(Position position, bool isCalledRecursively)
 {
     Tile *tile = this->tilesMap[position];
-    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && !isFirstTime);
+    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && isCalledRecursively);
     bool shouldStop = foundBombAndIsCalledRecursively || tile->isUncovered;
     if (shouldStop) { return; }
 
@@ -104,7 +104,7 @@ void Board::openAdjacentPositionsForTileAtPosition(Tile *tile, Position position
     if (!tile->canOpenAdjacentPositions()) { return; }
     
     for (auto &i : position.adjacentPositionsForMaxXMaxY(this->width, this->height)) {
-        openTileAtPosition(i, false);
+        openTileAtPosition(i, true);
     }
 }
 
