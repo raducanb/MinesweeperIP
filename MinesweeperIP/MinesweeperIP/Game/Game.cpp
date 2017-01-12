@@ -154,7 +154,7 @@ void Game::gameLoop()
         return;
     }
 
-    bool didWin = (this->board->numberOfUncoveredTiles() == this->board->numberOfBombs);
+    bool didWin = (this->board->numberOfCoveredTiles() == this->board->numberOfBombs);
     bool didLose = this->board->hasABombTileSelected();
     if (didWin) {
         printDidWinMessage();
