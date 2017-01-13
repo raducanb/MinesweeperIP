@@ -15,12 +15,12 @@
 
 using namespace std;
 
-enum MenuOption {
+enum InGameMenuOption {
     MenuOptionPrintMap = 1,
-    MenuOptionOpenTile = 2,
-    MenuOptionFlagTile = 3,
-    MenuOptionNewGame = 4,
-    MenuOptionPrintUncoveredMap = 5,
+    MenuOptionOpenTile,
+    MenuOptionFlagTile,
+    MenuOptionNewGame,
+    MenuOptionPrintUncoveredMap,
     MenuOptionEndGame
 };
 

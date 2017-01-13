@@ -16,13 +16,13 @@ class Game {
 private:
     Board *board;
     InGameMenu menu;
-    void userSelectedOption(MenuOption option);
+    void userSelectedOption(InGameMenuOption option);
     bool flagTile();
     bool openTile();
     void printMapAndForceUncover(bool forceUncover = false);
     Position inputPosition();
     void gameLoop();
-    MenuOption optionFromMenu();
+    InGameMenuOption optionFromMenu();
     void startGameWithSameConfiguration();
 public:
     Game(Board *board = new Board());

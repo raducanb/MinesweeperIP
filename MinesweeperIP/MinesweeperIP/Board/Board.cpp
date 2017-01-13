@@ -20,7 +20,7 @@ bool isTileBomb(Tile *tile)
 }
 
 Board::Board(int width, int height, int numberOfBombs)
-            : width(width), height(height), numberOfBombs(numberOfBombs)
+            : width(width), height(height), numberOfBombs(numberOfBombs), numberOfUncoveredTiles(0), numberOfFlaggedBombs(0)
 {
     initTilesMap(width, height);
     Positions positions = MapLogic::generateBombsPositions(width, height, numberOfBombs);
@@ -71,7 +71,7 @@ void Board::toggleFlagForTileAtPosition(Position position)
 
 string Board::mapDisplayString(bool forceUncover)
 {
-    return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover);
+    return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover).append("\n");
 }
 
 void Board::modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement)
@@ -161,8 +161,8 @@ void Board::replaceTileAtPositionIfIsBomb(Position position)
 
 Position Board::firstTilePositionThatIsNotBomb()
 {
-    for (int x = 0; x < this->width; x++) {
-        for (int y = 0; y < this->height; y++) {
+    for (int y = 0; y < this->height; y++) {
+        for (int x = 0; x < this->width; x++) {
             Position p;
             p.x = x;
             p.y = y;

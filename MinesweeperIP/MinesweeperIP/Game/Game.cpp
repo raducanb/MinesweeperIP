@@ -18,19 +18,13 @@ using namespace std;
 void printMenu(InGameMenu menu)
 {
     cout << menu.displayString();
-    cout << "\n";
 }
 
-MenuOption inputMenuOptionForMenu(InGameMenu menu)
+InGameMenuOption inputMenuOptionForMenu(InGameMenu menu)
 {
     int input = Utils::inputNumber("Introdu o opțiune din meniu", menu.isOptionValid);
 
-    return (MenuOption)input;
-}
-
-static bool verifyNumberMinZero(int number)
-{
-    return number >= 0;
+    return (InGameMenuOption)input;
 }
 
 void printDidWinMessage()
@@ -49,10 +43,10 @@ Position Game::inputPosition()
 {
     Position p;
     do {
-        p.x = Utils::inputNumber("Introdu x", verifyNumberMinZero);
+        p.x = Utils::inputNumber("Introdu x", Utils::verifyNumberMinZero);
     } while (p.x >= this->board->width);
     do {
-        p.y = Utils::inputNumber("Introdu y", verifyNumberMinZero);
+        p.y = Utils::inputNumber("Introdu y", Utils::verifyNumberMinZero);
     } while (p.y >= this->board->height);
     return p;
 }
@@ -89,10 +83,10 @@ bool Game::openTile()
 
 void Game::printMapAndForceUncover(bool forceUncover)
 {
-    cout << "\n" << this->board->mapDisplayString(forceUncover) << "\n";
+    cout << "\n" << this->board->mapDisplayString(forceUncover);
 }
 
-void Game::userSelectedOption(MenuOption option)
+void Game::userSelectedOption(InGameMenuOption option)
 {
     switch (option) {
         case MenuOptionNewGame:
@@ -117,6 +111,7 @@ void Game::userSelectedOption(MenuOption option)
             printMapAndForceUncover(true);
             break;
         case MenuOptionEndGame:
+            cout << "\nJoc abandonat\n";
             break;
     }
 }
@@ -133,7 +128,7 @@ void Game::startGame()
     gameLoop();
 }
 
-MenuOption Game::optionFromMenu()
+InGameMenuOption Game::optionFromMenu()
 {
     printMenu(this->menu);
     return inputMenuOptionForMenu(this->menu);
@@ -141,7 +136,7 @@ MenuOption Game::optionFromMenu()
 
 void Game::gameLoop()
 {
-    MenuOption option = optionFromMenu();
+    InGameMenuOption option = optionFromMenu();
     userSelectedOption(option);
 
     if (option == MenuOptionNewGame || option == MenuOptionEndGame) { return; }
@@ -163,10 +158,7 @@ void Game::gameLoop()
         printMapAndForceUncover();
     }
 
-    if (didWin || didLose) {
-        startGameWithSameConfiguration();
-        return;
+    if (!didWin && !didLose) {
+        gameLoop();
     }
-
-    gameLoop();
 }

@@ -16,7 +16,13 @@ using namespace std;
 
 class Utils {
 public:
-    static int inputNumber(string stringToShow, function<bool (int)> verificationFunction) {
+    static bool verifyNumberMinZero(int number)
+    {
+        return number >= 0;
+    }
+
+    static int inputNumber(string stringToShow, function<bool (int)> verificationFunction)
+    {
         int inputOption = 0;
         string inputString;
         bool didTryOnce;
