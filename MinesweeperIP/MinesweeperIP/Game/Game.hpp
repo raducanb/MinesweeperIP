@@ -9,8 +9,6 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include <stdio.h>
-
 #include "../Board/Board.hpp"
 #include "Menu/InGameMenu.hpp"
 

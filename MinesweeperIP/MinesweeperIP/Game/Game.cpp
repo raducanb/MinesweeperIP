@@ -11,6 +11,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "../Utils.cpp"
+
 using namespace std;
 
 void printMenu(InGameMenu menu)
@@ -19,27 +21,9 @@ void printMenu(InGameMenu menu)
     cout << "\n";
 }
 
-int inputNumber(string stringToShow, function<bool (int)> verificationFunction)
-{
-    int inputOption = 0;
-    string inputString;
-    bool didTryOnce;
-
-    while (true) {
-        cout << stringToShow << (didTryOnce ? " validă" : "") << ": ";
-        cin >> inputString;
-
-        stringstream stream(inputString);
-        if (stream >> inputOption && verificationFunction(inputOption)) { break; }
-        didTryOnce = true;
-    }
-
-    return inputOption;
-}
-
 MenuOption inputMenuOptionForMenu(InGameMenu menu)
 {
-    int input = inputNumber("Introdu o opțiune din meniu", menu.isOptionValid);
+    int input = Utils::inputNumber("Introdu o opțiune din meniu", menu.isOptionValid);
 
     return (MenuOption)input;
 }
@@ -65,10 +49,10 @@ Position Game::inputPosition()
 {
     Position p;
     do {
-        p.x = inputNumber("Introdu x", verifyNumberMinZero);
+        p.x = Utils::inputNumber("Introdu x", verifyNumberMinZero);
     } while (p.x >= this->board->width);
     do {
-        p.y = inputNumber("Introdu y", verifyNumberMinZero);
+        p.y = Utils::inputNumber("Introdu y", verifyNumberMinZero);
     } while (p.y >= this->board->height);
     return p;
 }
