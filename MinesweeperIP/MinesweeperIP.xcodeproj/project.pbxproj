@@ -33,6 +33,7 @@
 		6E7FCE901E1BDA4F00778C8C /* ValueTile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueTile.hpp; sourceTree = "<group>"; };
 		6E7FCE951E1BDC8F00778C8C /* Board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		6E7FCE961E1BDC8F00778C8C /* Board.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
+		6E87A2CA1E292E4700FA6B48 /* MenuAbstract.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuAbstract.hpp; sourceTree = "<group>"; };
 		6EA1B0081E24026300E5802D /* MapLogic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapLogic.cpp; sourceTree = "<group>"; };
 		6EA1B0091E24026300E5802D /* Position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Position.cpp; sourceTree = "<group>"; };
 		6EE21B8B1E227874000A46DF /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 			children = (
 				6EE21B901E228904000A46DF /* Menu.hpp */,
 				6EE21B8F1E228904000A46DF /* Menu.cpp */,
+				6E87A2CA1E292E4700FA6B48 /* MenuAbstract.hpp */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
