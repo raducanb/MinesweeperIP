@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void printMenu(Menu menu)
+void printMenu(InGameMenu menu)
 {
     cout << menu.displayString();
     cout << "\n";
@@ -37,7 +37,7 @@ int inputNumber(string stringToShow, function<bool (int)> verificationFunction)
     return inputOption;
 }
 
-MenuOption inputMenuOptionForMenu(Menu menu)
+MenuOption inputMenuOptionForMenu(InGameMenu menu)
 {
     int input = inputNumber("Introdu o opțiune din meniu", menu.isOptionValid);
 

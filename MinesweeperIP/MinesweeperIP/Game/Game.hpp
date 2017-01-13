@@ -12,12 +12,12 @@
 #include <stdio.h>
 
 #include "../Board/Board.hpp"
-#include "Menu/Menu.hpp"
+#include "Menu/InGameMenu.hpp"
 
 class Game {
 private:
     Board *board;
-    Menu menu;
+    InGameMenu menu;
     void userSelectedOption(MenuOption option);
     bool flagTile();
     bool openTile();

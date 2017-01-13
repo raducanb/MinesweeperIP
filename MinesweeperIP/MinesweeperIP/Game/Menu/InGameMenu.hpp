@@ -1,5 +1,5 @@
 //
-//  Menu.hpp
+//  InGameMenu.hpp
 //  MinesweeperIP
 //
 //  Created by Bogdan on 1/8/17.
@@ -24,7 +24,7 @@ enum MenuOption {
     MenuOptionEndGame
 };
 
-class Menu {
+class InGameMenu {
 public:
     string displayString();
     static bool isOptionValid(int option);
