@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 
-#include "Board.hpp"
-#include "Menu.hpp"
+#include "../Board/Board.hpp"
+#include "Menu/Menu.hpp"
 
 class Game {
 private:

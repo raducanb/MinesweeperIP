@@ -8,9 +8,9 @@
 
 #include <iostream>
 
-#include "Tile.hpp"
+#include "Tiles/Tile.hpp"
 
-#include "Game.hpp"
+#include "Game/Game.hpp"
 
 using namespace std;
 

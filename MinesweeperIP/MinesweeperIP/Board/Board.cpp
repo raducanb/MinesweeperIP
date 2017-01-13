@@ -8,8 +8,8 @@
 
 #include "Board.hpp"
 
-#include "BombTile.hpp"
-#include "ValueTile.hpp"
+#include "../Tiles/BombTile.hpp"
+#include "../Tiles/ValueTile.hpp"
 
 #include <time.h>
 #include <set>

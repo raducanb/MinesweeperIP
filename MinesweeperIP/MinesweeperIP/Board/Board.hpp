@@ -10,7 +10,7 @@
 #define Board_hpp
 
 #include "MapLogic.cpp"
-#include "Tile.hpp"
+#include "../Tiles/Tile.hpp"
 
 #include <map>
 #include <vector>

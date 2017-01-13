@@ -13,7 +13,7 @@
 #include <map>
 
 #include "Position.cpp"
-#include "Tile.hpp"
+#include "../Tiles/Tile.hpp"
 
 using namespace std;
 
