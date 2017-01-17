@@ -8,8 +8,8 @@
 
 #include "Board.hpp"
 
-#include "BombTile.hpp"
-#include "ValueTile.hpp"
+#include "../Tiles/BombTile.hpp"
+#include "../Tiles/ValueTile.hpp"
 
 #include <time.h>
 #include <set>
@@ -20,7 +20,7 @@ bool isTileBomb(Tile *tile)
 }
 
 Board::Board(int width, int height, int numberOfBombs)
-            : width(width), height(height), numberOfBombs(numberOfBombs)
+            : width(width), height(height), numberOfBombs(numberOfBombs), numberOfUncoveredTiles(0), numberOfFlaggedBombs(0)
 {
     initTilesMap(width, height);
     Positions positions = MapLogic::generateBombsPositions(width, height, numberOfBombs);
@@ -52,7 +52,7 @@ void Board::addBombsToTilesMapAtPositions(Positions bombsPositions)
         BombTile *bombTile = new BombTile();
         this->tilesMap[position] = bombTile;
         auto adjacentPositions = position.adjacentPositionsForMaxXMaxY(this->width, this->height);
-        incrementValuesForAllTilesAtPositions(adjacentPositions);
+        modifyValuesForTilesAtPositions(adjacentPositions, true);
     }
 }
 
@@ -60,18 +60,25 @@ void Board::toggleFlagForTileAtPosition(Position position)
 {
     Tile *tile = this->tilesMap[position];
     tile->isFlagged = !tile->isFlagged;
+
+    int addOrRemoveFlag = (tile->isFlagged ? 1 : -1);
+    this->numberOfFlags += addOrRemoveFlag;
+
+    if (isTileBomb(tile)) {
+        this->numberOfFlaggedBombs += addOrRemoveFlag;
+    }
 }
 
 string Board::mapDisplayString(bool forceUncover)
 {
-    return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover);
+    return MapLogic::displayStringForMap(this->tilesMap, this->width, forceUncover).append("\n");
 }
 
-void Board::incrementValuesForAllTilesAtPositions(Positions positions)
+void Board::modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement)
 {
     for (Position &position : positions) {
         Tile *tile = this->tilesMap[position];
-        tile->incrementValue();
+        shouldIncrement ? tile->incrementValue() : tile->decrementValue();
     }
 }
 
@@ -83,18 +90,22 @@ bool Board::canOpenTileAtPosition(Position position)
 
 bool Board::canToggleFlagForTileAtPosition(Position position)
 {
+    bool reachedMaximumNumberOfFlags = (this->numberOfFlags == this->numberOfBombs);
+    if (reachedMaximumNumberOfFlags) { return false; }
+
     Tile *tile = this->tilesMap[position];
     return !tile->isUncovered;
 }
 
-void Board::openTileAtPosition(Position position, bool isFirstTime)
+void Board::openTileAtPosition(Position position, bool isCalledRecursively)
 {
     Tile *tile = this->tilesMap[position];
-    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && !isFirstTime);
+    bool foundBombAndIsCalledRecursively = (isTileBomb(tile) && isCalledRecursively);
     bool shouldStop = foundBombAndIsCalledRecursively || tile->isUncovered;
     if (shouldStop) { return; }
 
     tile->isUncovered = true;
+    this->numberOfUncoveredTiles++;
 
     openAdjacentPositionsForTileAtPosition(tile, position);
 }
@@ -104,7 +115,7 @@ void Board::openAdjacentPositionsForTileAtPosition(Tile *tile, Position position
     if (!tile->canOpenAdjacentPositions()) { return; }
     
     for (auto &i : position.adjacentPositionsForMaxXMaxY(this->width, this->height)) {
-        openTileAtPosition(i, false);
+        openTileAtPosition(i, true);
     }
 }
 
@@ -120,15 +131,9 @@ bool Board::hasABombTileSelected()
     return false;
 }
 
-int Board::numberOfUncoveredTiles()
+int Board::numberOfCoveredTiles()
 {
-    int uncoveredTilesNumber = 0;
-    for (auto &i : this->tilesMap) {
-        Tile *tile = i.second;
-        if (tile->isUncovered) { continue; }
-        uncoveredTilesNumber++;
-    }
-    return uncoveredTilesNumber;
+    return (int)this->tilesMap.size() - this->numberOfUncoveredTiles;
 }
 
 void Board::uncoverAllBombs()
@@ -138,4 +143,34 @@ void Board::uncoverAllBombs()
         if (!isTileBomb(tile)) { continue; }
         tile->isUncovered = true;
     }
+}
+
+void Board::replaceTileAtPositionIfIsBomb(Position position)
+{
+    Tile *tile = this->tilesMap[position];
+    if (!isTileBomb(tile)) { return; }
+
+    Position p = this->firstTilePositionThatIsNotBomb();
+
+    modifyValuesForTilesAtPositions(position.adjacentPositionsForMaxXMaxY(this->width, this->height), false);
+    modifyValuesForTilesAtPositions(p.adjacentPositionsForMaxXMaxY(this->width, this->height), true);
+
+    this->tilesMap[position] = this->tilesMap[p];
+    this->tilesMap[p] = tile;
+}
+
+Position Board::firstTilePositionThatIsNotBomb()
+{
+    for (int y = 0; y < this->height; y++) {
+        for (int x = 0; x < this->width; x++) {
+            Position p;
+            p.x = x;
+            p.y = y;
+
+            Tile *tile = this->tilesMap[p];
+            if (isTileBomb(tile)) { continue; }
+            return p;
+        }
+    }
+    return Position();
 }

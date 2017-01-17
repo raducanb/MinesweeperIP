@@ -1,5 +1,5 @@
 //
-//  Menu.hpp
+//  InGameMenu.hpp
 //  MinesweeperIP
 //
 //  Created by Bogdan on 1/8/17.
@@ -15,16 +15,16 @@
 
 using namespace std;
 
-enum MenuOption {
+enum InGameMenuOption {
     MenuOptionPrintMap = 1,
-    MenuOptionOpenTile = 2,
-    MenuOptionFlagTile = 3,
-    MenuOptionNewGame = 4,
-    MenuOptionPrintUncoveredMap = 5,
+    MenuOptionOpenTile,
+    MenuOptionFlagTile,
+    MenuOptionNewGame,
+    MenuOptionPrintUncoveredMap,
     MenuOptionEndGame
 };
 
-class Menu {
+class InGameMenu {
 public:
     string displayString();
     static bool isOptionValid(int option);

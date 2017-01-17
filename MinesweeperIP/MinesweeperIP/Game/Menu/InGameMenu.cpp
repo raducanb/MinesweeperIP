@@ -1,21 +1,21 @@
 //
-//  Menu.cpp
+//  InGameMenu.cpp
 //  MinesweeperIP
 //
 //  Created by Bogdan on 1/8/17.
 //  Copyright © 2017 Bogdan Raducan. All rights reserved.
 //
 
-#include "Menu.hpp"
+#include "InGameMenu.hpp"
 
 #include <map>
 #include <string>
 
 using namespace std;
 
-typedef map<MenuOption, string> MenuValuesMap;
+typedef map<InGameMenuOption, string> MenuValuesMap;
 
-struct MenuValues {
+struct InGameMenuValues {
     static MenuValuesMap create_map()
     {
         MenuValuesMap values;
@@ -30,24 +30,25 @@ struct MenuValues {
     static const MenuValuesMap menuValuesMap;
 };
 
-const MenuValuesMap MenuValues::menuValuesMap = MenuValues::create_map();
+const MenuValuesMap InGameMenuValues::menuValuesMap = InGameMenuValues::create_map();
 
-string Menu::displayString()
+string InGameMenu::displayString()
 {
     string displayString;
 
-    for (auto &menuValue : MenuValues::menuValuesMap) {
+    for (auto &menuValue : InGameMenuValues::menuValuesMap) {
         displayString.append(to_string(menuValue.first));
         displayString.append(". ");
         displayString.append(menuValue.second);
         displayString.append(".\n");
     }
+    displayString.append("\n");
 
     return displayString;
 }
 
-bool Menu::isOptionValid(int option)
+bool InGameMenu::isOptionValid(int option)
 {
-    MenuValuesMap valuesMap = MenuValues::menuValuesMap;
-    return valuesMap.find((MenuOption)option) != valuesMap.end();
+    MenuValuesMap valuesMap = InGameMenuValues::menuValuesMap;
+    return valuesMap.find((InGameMenuOption)option) != valuesMap.end();
 }

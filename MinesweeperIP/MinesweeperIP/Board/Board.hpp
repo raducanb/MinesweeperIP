@@ -10,7 +10,7 @@
 #define Board_hpp
 
 #include "MapLogic.cpp"
-#include "Tile.hpp"
+#include "../Tiles/Tile.hpp"
 
 #include <map>
 #include <vector>
@@ -23,26 +23,31 @@ typedef vector<Position> Positions;
 class Board {
 private:
     map<Position, Tile *> tilesMap;
+    int numberOfFlags;
 
     void initTilesMap(int width, int height);
     void addBombsToTilesMapAtPositions(Positions bombsPositions);
-    void incrementValuesForAllTilesAtPositions(Positions positions);
+    void modifyValuesForTilesAtPositions(Positions positions, bool shouldIncrement);
     void openAdjacentPositionsForTileAtPosition(Tile *, Position position);
+    Position firstTilePositionThatIsNotBomb();
 public:
     const int width;
     const int height;
     const int numberOfBombs;
+    int numberOfUncoveredTiles;
+    int numberOfFlaggedBombs;
 
     Board(int width = 5, int height = 5, int numberOfBombs = 3);
     ~Board();
     bool canOpenTileAtPosition(Position position);
     bool canToggleFlagForTileAtPosition(Position position);
-    void openTileAtPosition(Position position, bool isFirstTime = true);
+    void openTileAtPosition(Position position, bool isCalledRecursively = false);
     void toggleFlagForTileAtPosition(Position position);
     string mapDisplayString(bool forceUncover = false);
     bool hasABombTileSelected();
-    int numberOfUncoveredTiles();
+    int numberOfCoveredTiles();
     void uncoverAllBombs();
+    void replaceTileAtPositionIfIsBomb(Position position);
 };
 
 #endif /* Board_hpp */

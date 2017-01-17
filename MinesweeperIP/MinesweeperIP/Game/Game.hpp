@@ -9,22 +9,20 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include <stdio.h>
-
-#include "Board.hpp"
-#include "Menu.hpp"
+#include "../Board/Board.hpp"
+#include "Menu/InGameMenu.hpp"
 
 class Game {
 private:
     Board *board;
-    Menu menu;
-    void userSelectedOption(MenuOption option);
-    void flagTile();
-    void openTile();
+    InGameMenu menu;
+    void userSelectedOption(InGameMenuOption option);
+    bool flagTile();
+    bool openTile();
     void printMapAndForceUncover(bool forceUncover = false);
     Position inputPosition();
     void gameLoop();
-    MenuOption optionFromMenu();
+    InGameMenuOption optionFromMenu();
     void startGameWithSameConfiguration();
 public:
     Game(Board *board = new Board());

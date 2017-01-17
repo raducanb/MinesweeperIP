@@ -13,7 +13,7 @@
 #include <map>
 
 #include "Position.cpp"
-#include "Tile.hpp"
+#include "../Tiles/Tile.hpp"
 
 using namespace std;
 
@@ -42,7 +42,8 @@ struct MapLogic {
         return Positions(bombsPositions.begin(), bombsPositions.end());
     }
 
-    static string displayStringForMap(map<Position, Tile *> map, int width, bool forceUncover) {
+    static string displayStringForMap(map<Position, Tile *> map, int width, bool forceUncover)
+    {
         string mapString;
         for(auto const &posAndTile : map) {
             string tileString = posAndTile.second->displayString(forceUncover);
