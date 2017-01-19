@@ -39,6 +39,11 @@ void inputForNewGame()
     int width = Utils::inputNumber("Introdu nr de coloane", Utils::verifyNumberMinZero);
     int height = Utils::inputNumber("Introdu nr de linii", Utils::verifyNumberMinZero);
     int numberOfBombs = Utils::inputNumber("Introdu nr de bombe", Utils::verifyNumberMinZero);
+    if (0.6 * width * height < numberOfBombs) {
+        cout << "Numarul de bombe trebuie sa fie mai mic decat 60% din numarul total de tile-uri\n";
+        inputForNewGame();
+        return;
+    }
     newGame(width, height, numberOfBombs);
 }
 
